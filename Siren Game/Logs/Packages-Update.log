@@ -56,3 +56,13 @@ The following packages were updated:
   com.unity.inputsystem from version 1.6.3 to 1.7.0
   com.unity.timeline from version 1.7.4 to 1.7.6
   com.unity.visualscripting from version 1.8.0 to 1.9.4
+
+=== Fri Sep 27 10:45:10 2024
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.collab-proxy from version 2.4.3 to 2.5.1
+  com.unity.inputsystem from version 1.7.0 to 1.11.0
+  com.unity.textmeshpro from version 3.0.6 to 3.0.7
