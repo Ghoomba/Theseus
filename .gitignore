@@ -87,3 +87,5 @@ Siren Game/Logs/shadercompiler-UnityShaderCompiler.exe4.log
 Siren Game/Logs/shadercompiler-UnityShaderCompiler.exe5.log
 Siren Game/Logs/shadercompiler-UnityShaderCompiler.exe6.log
 Siren Game/Logs/shadercompiler-UnityShaderCompiler.exe7.log
+*.log
+*.cache
