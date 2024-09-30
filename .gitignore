@@ -59,3 +59,5 @@ sysinfo.txt
 crashlytics-build.properties
 /Siren Game/Logs
 /Siren Game/obj
+*.log
+*.cache

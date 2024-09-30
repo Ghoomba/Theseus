@@ -105,7 +105,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "2.4.3",
+      "version": "2.5.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -162,7 +162,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-      "version": "1.7.0",
+      "version": "1.11.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -189,7 +189,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "3.0.6",
+      "version": "3.0.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
