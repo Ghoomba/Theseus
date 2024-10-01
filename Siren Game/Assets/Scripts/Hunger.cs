@@ -5,14 +5,24 @@ using UnityEngine;
 
 public class Hunger : MonoBehaviour
 {
-    public float hungerMax = 60.0f;
+    public float hungerMax = 20.0f;
     float hunger;
     public float hungerDrainPerSecond = 1.0f;
-    public GameObject meter;
+    GameObject meter;
     // Start is called before the first frame update
     void Start()
     {
-        hunger = hungerMax;
+        meter = gameObject;
+        if (Manager.Instance.hunger >= 0)
+        {
+            hunger = Mathf.Min(Manager.Instance.newHunger, hungerMax);
+        }
+        else
+        {
+            hunger = hungerMax;
+        }
+
+        meter = gameObject;
     }
 
     // Update is called once per frame
@@ -26,14 +36,10 @@ public class Hunger : MonoBehaviour
 
         if (hunger <= 0)
         {
-            //todo: implement failure
             hunger = 0;
+            Manager.Instance.lose();
         }
-    }
 
-    void RestoreHunger(float food)
-    {
-        hunger += food;
-        hunger = Mathf.Min(hunger, hungerMax);
+        Manager.Instance.hunger = hunger;
     }
 }
