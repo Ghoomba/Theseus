@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hungerMax: 20
-  hungerDrainPerSecond: 1
+  hungerDrainPerSecond: 2
 --- !u!1 &1648919549
 GameObject:
   m_ObjectHideFlags: 0
