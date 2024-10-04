@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Beats : MonoBehaviour
 {
-    List<(float, int, GameObject)> timings = null;
+    List<(float, int, GameObject, bool)> timings = null;
     float offset = 0f;
     public GameObject noteBasis;
     public GameObject staffObject;
@@ -17,7 +17,7 @@ public class Beats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timings = new List<(float, int, GameObject)> ();
+        timings = new List<(float, int, GameObject, bool)> ();
 
         switch(Manager.Instance.song)
         {
@@ -70,39 +70,41 @@ public class Beats : MonoBehaviour
             hit = float.PositiveInfinity;
             for (int i = 0; i < timings.Count; i++)
             {
-                if (Mathf.Abs(timings[i].Item1) < 15 / bpm) //if right within a quarter beat
+                if (!timings[i].Item4)
                 {
-                    switch(timings[i].Item2)
+                    if (Mathf.Abs(timings[i].Item1) < 15 / bpm) //if right within a quarter beat
                     {
-                        case 0:
-                            if (!Input.GetKeyDown(KeyCode.Space))
+                        switch (timings[i].Item2)
+                        {
+                            case 0:
+                                if (!Input.GetKeyDown(KeyCode.Space))
                                 { continue; }
-                            break;
-                        case 1:
-                            if (!Input.GetKeyDown(KeyCode.W))
-                            { continue; }
-                            break;
-                        case 2:
-                            if (!Input.GetKeyDown(KeyCode.A))
-                            { continue; }
-                            break;
-                        case 3:
-                            if (!Input.GetKeyDown(KeyCode.D))
-                            { continue; }
-                            break;
-                        case 4:
-                            if (!Input.GetKeyDown(KeyCode.S))
-                            { continue; }
-                            break;
+                                break;
+                            case 1:
+                                if (!Input.GetKeyDown(KeyCode.W))
+                                { continue; }
+                                break;
+                            case 2:
+                                if (!Input.GetKeyDown(KeyCode.A))
+                                { continue; }
+                                break;
+                            case 3:
+                                if (!Input.GetKeyDown(KeyCode.D))
+                                { continue; }
+                                break;
+                            case 4:
+                                if (!Input.GetKeyDown(KeyCode.S))
+                                { continue; }
+                                break;
+                        }
+                        hit = timings[i].Item1; //set hit to the offset
+                        timings[i] = (timings[i].Item1, timings[i].Item2, timings[i].Item3, true);
+                        break;
                     }
-                    hit = timings[i].Item1; //set hit to the offset
-                    Object.Destroy(timings[i].Item3);
-                    timings.RemoveAt(i);
-                    break;
-                }
-                if (timings[i].Item1 > 15 / bpm) //if there are no beats yet and we've already reached a quarter beat in the future, we've missed
-                {
-                    break;
+                    if (timings[i].Item1 > 15 / bpm) //if there are no beats yet and we've already reached a quarter beat in the future, we've missed
+                    {
+                        break;
+                    }
                 }
             }
             Debug.Log(hit.ToString());
@@ -110,42 +112,49 @@ public class Beats : MonoBehaviour
 
         for (int i = 0; i < timings.Count; i++)
         {
-            timings[i] = (timings[i].Item1 - Time.deltaTime, timings[i].Item2, timings[i].Item3);
-            if (timings[i].Item1 < 120/bpm)
+            if (!timings[i].Item4)
             {
-                switch(timings[i].Item2)
+                timings[i] = (timings[i].Item1 - Time.deltaTime, timings[i].Item2, timings[i].Item3, timings[i].Item4);
+                if (timings[i].Item1 < 120 / bpm)
                 {
-                    case 0:
-                        timings[i].Item3.SetActive(true);
-                        timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0, 0);
-                        break;
-                    case 1:
-                        timings[i].Item3.SetActive(true);
-                        timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0.375f, 0);
-                        timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
-                        break;
-                    case 2:
-                        timings[i].Item3.SetActive(true);
-                        timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0.125f, 0);
-                        timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
-                        break;
-                    case 3:
-                        timings[i].Item3.SetActive(true);
-                        timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), -0.125f, 0);
-                        timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
-                        break;
-                    case 4:
-                        timings[i].Item3.SetActive(true);
-                        timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), -0.375f, 0);
-                        timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
-                        break;
+                    switch (timings[i].Item2)
+                    {
+                        case 0:
+                            timings[i].Item3.SetActive(true);
+                            timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0, 0);
+                            break;
+                        case 1:
+                            timings[i].Item3.SetActive(true);
+                            timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0.375f, 0);
+                            timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
+                            break;
+                        case 2:
+                            timings[i].Item3.SetActive(true);
+                            timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0.125f, 0);
+                            timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
+                            break;
+                        case 3:
+                            timings[i].Item3.SetActive(true);
+                            timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), -0.125f, 0);
+                            timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
+                            break;
+                        case 4:
+                            timings[i].Item3.SetActive(true);
+                            timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), -0.375f, 0);
+                            timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
+                            break;
+                    }
+                    if (timings[i].Item1 < -15 / bpm)
+                    {
+                        timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 50f / 255f);
+                    }
                 }
-            }
-            if (timings[i].Item2 == -1)
-            {
-                if (timings[i].Item1 < 0)
+                if (timings[i].Item2 == -1)
                 {
-                    Manager.Instance.exitBattle(10.0f);
+                    if (timings[i].Item1 < 0)
+                    {
+                        Manager.Instance.exitBattle(10.0f);
+                    }
                 }
             }
         }
@@ -156,6 +165,15 @@ public class Beats : MonoBehaviour
                 Object.Destroy(timings[i].Item3);
                 timings.RemoveAt(i);
             }
+            if (timings[i].Item4)
+            {
+                timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, timings[i].Item3.GetComponent<SpriteRenderer>().color.a - Time.deltaTime * 100f / 255f);
+                if (timings[i].Item3.GetComponent<SpriteRenderer>().color.a < 0)
+                {
+                    Object.Destroy(timings[i].Item3);
+                    timings.RemoveAt(i);
+                }
+            }
         }
     }
 
@@ -164,7 +182,8 @@ public class Beats : MonoBehaviour
         timings.Add((
             (beatCount / bpm * 60) - offset,
             noteType,
-            Object.Instantiate(noteBasis, staffObject.transform)
+            Object.Instantiate(noteBasis, staffObject.transform),
+            false
         ));
     }
 }
