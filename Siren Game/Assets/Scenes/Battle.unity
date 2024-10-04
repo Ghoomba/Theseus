@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hungerMax: 20
-  hungerDrainPerSecond: 1
+  hungerDrainPerSecond: 0.1
 --- !u!212 &1255993529
 SpriteRenderer:
   m_ObjectHideFlags: 0
