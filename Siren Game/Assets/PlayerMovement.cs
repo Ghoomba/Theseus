@@ -6,6 +6,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     float moveSpeed;
+    public float minX;
+    public float minY;
+    public float maxX;
+    public float maxY;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +46,12 @@ public class PlayerMovement : MonoBehaviour
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
         }
 
+
+        transform.position = new Vector3(
+            Mathf.Max(minX, Mathf.Min(transform.position.x, maxX)),
+            Mathf.Max(minY, Mathf.Min(transform.position.y, maxY)),
+            0
+        );
     }
 
 
