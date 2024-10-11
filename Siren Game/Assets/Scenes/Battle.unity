@@ -315,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteBasis: {fileID: 1274639636}
   staffObject: {fileID: 86146363}
+  hungerMeterScriptObject: {fileID: 1255993526}
 --- !u!1 &514463178
 GameObject:
   m_ObjectHideFlags: 0
