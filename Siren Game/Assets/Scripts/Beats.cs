@@ -10,6 +10,7 @@ public class Beats : MonoBehaviour
     float offset = 0f;
     public GameObject noteBasis;
     public GameObject staffObject;
+    public GameObject hungerMeterScriptObject;
     float bpm = 60f;
 
     const float noteStart = 0.5f;
