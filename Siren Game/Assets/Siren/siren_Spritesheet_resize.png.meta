@@ -1,0 +1,1152 @@
+fileFormatVersion: 2
+guid: 8a2f91dc662bf424c808acf4464778e0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 3838
+        width: 123
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d2c6cad1f46b504dbbd5feec7739770
+      internalID: 918015700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_1
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 3839
+        width: 124
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841c3e955c91948498608f2b00300443
+      internalID: 1572135296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_2
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 3839
+        width: 122
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db7a42f5d6243c8478afdfeaeb07e089
+      internalID: 294122553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_3
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 3838
+        width: 122
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 967f09e3b18999d4ea08dc43afd38bb6
+      internalID: 1249460994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_4
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 3838
+        width: 124
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29cef01d1495ff040acd29299054ec00
+      internalID: -1661230774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_5
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 3413
+        width: 129
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd5f814061a345f4eb12a3cdcb27202d
+      internalID: -1605863163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_6
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 3413
+        width: 131
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed32677f894946a4bb7bd6bdc62cd2a1
+      internalID: -835462603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_7
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 3413
+        width: 133
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e858619c1c58f514d8072d5bf228bd22
+      internalID: 907307233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_8
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 3415
+        width: 134
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9004614cead8e429aa650f397e75bd
+      internalID: -1109663808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_9
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 3416
+        width: 134
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed37d5474c9ba564893531b2273c511a
+      internalID: -679746456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_10
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 2991
+        width: 135
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b49b9042eb5c344b8cbb3941b3df0ca
+      internalID: 704389687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_11
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 2991
+        width: 138
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b71f3b4dd56824f9ed3624456e0d6f
+      internalID: 857290345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_12
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 2991
+        width: 138
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15ece4d8340d50146873c87af37a7d83
+      internalID: 1919096575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_13
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 2990
+        width: 140
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5dccabf79661274dab96c4ab858827c
+      internalID: -597149644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_14
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 2988
+        width: 140
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e82d2fe23d33234887a56c2c3c3cb81
+      internalID: 636936850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_15
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 2563
+        width: 141
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586ac96d14c38f54e8974ef4c1fb2218
+      internalID: 1363951146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_16
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 2563
+        width: 139
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9c234f71609b740aaadf6b02658b1f
+      internalID: -1706877049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_17
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 2563
+        width: 134
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ef9f57723282e4bacbeab55c8d3d97
+      internalID: 937497147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_18
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 2563
+        width: 132
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2781b78b95c42644b932295bfb6105ea
+      internalID: -1205682749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_19
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 2563
+        width: 129
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5403add1a2405d4db3152e8ac5e897d
+      internalID: 327896001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_20
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 2138
+        width: 126
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e76df31c664ee7c4193995c7d93eb938
+      internalID: 1217112384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_21
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 2138
+        width: 124
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a344bca85d49840a5d87fdd50532ac
+      internalID: -30078047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_22
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 2138
+        width: 122
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 304c5772465d63046a8993143f646bf7
+      internalID: 349178046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_23
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 2139
+        width: 124
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366c13088ee9a7545a2c75f16946ff4c
+      internalID: 802906712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_24
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 2138
+        width: 123
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 872dba3e44506a74e9aafb3ceee666d1
+      internalID: -1037990812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_25
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1713
+        width: 123
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46d1ab9e007813549a17b5d454c60ea9
+      internalID: -284218612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_26
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1713
+        width: 122
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb743ce38a400404da03585357145811
+      internalID: -624838849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_27
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 1712
+        width: 122
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1380265d18b1d764ba1036250b4c3bad
+      internalID: 1776181131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_28
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1712
+        width: 124
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ecb5e4bde0893643a522db59259a1da
+      internalID: -1829752127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_29
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 1712
+        width: 126
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6262d5d67b4d23f4dbc581d07e2d1e41
+      internalID: -170373697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_30
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1287
+        width: 128
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7d9294d47ee37f4fad66ef855ea8da8
+      internalID: 1970386225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_31
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 1287
+        width: 128
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 709aae50b8ab4b649a4cd4d7ca33d0bc
+      internalID: -1294577591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_32
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 1287
+        width: 130
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93639be87ce27534d8e42821fb4c8b99
+      internalID: 649023604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_33
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1287
+        width: 131
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb45e54970f25e544b46498904417a48
+      internalID: 338175612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_34
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 1287
+        width: 133
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93554c10624e83843b1249291357aed1
+      internalID: 461097589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_35
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 862
+        width: 134
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08e0ddd5730707b4ab98f8359badab39
+      internalID: 682561412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_36
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 862
+        width: 134
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98ae3e21c59db67418aa736890395aaf
+      internalID: -1805528051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_37
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 862
+        width: 137
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 095cb779f7bee594e9162c4e9fcf49e0
+      internalID: -1775893728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_38
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 862
+        width: 133
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c294a3797f316649ae6a4750d4e7b3d
+      internalID: 1652316461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_39
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 862
+        width: 130
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e369309856a7f1b4aa3ed47b9b5aa69f
+      internalID: 654027472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_40
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 437
+        width: 126
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 168ee5b8ba133514687a6a6cf3f70daa
+      internalID: 1556541655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_41
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 437
+        width: 124
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f5cdd12b60e5c4fa6d7037b5078efc
+      internalID: -134309844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_42
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 437
+        width: 122
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 705b0eece44e8144f904975307caf041
+      internalID: 1994957382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_43
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 438
+        width: 122
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed0e94a5b845ae488584eae92705616
+      internalID: -1874189317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_44
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 439
+        width: 123
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19ffaac00753ed54991abfa862a88ab7
+      internalID: 1815948214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: siren_Spritesheet_resize_45
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 12
+        width: 123
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0902c64c8f3effa40a6b68ed79f73b0f
+      internalID: -2968673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      siren_Spritesheet_resize_0: 918015700
+      siren_Spritesheet_resize_1: 1572135296
+      siren_Spritesheet_resize_10: 704389687
+      siren_Spritesheet_resize_11: 857290345
+      siren_Spritesheet_resize_12: 1919096575
+      siren_Spritesheet_resize_13: -597149644
+      siren_Spritesheet_resize_14: 636936850
+      siren_Spritesheet_resize_15: 1363951146
+      siren_Spritesheet_resize_16: -1706877049
+      siren_Spritesheet_resize_17: 937497147
+      siren_Spritesheet_resize_18: -1205682749
+      siren_Spritesheet_resize_19: 327896001
+      siren_Spritesheet_resize_2: 294122553
+      siren_Spritesheet_resize_20: 1217112384
+      siren_Spritesheet_resize_21: -30078047
+      siren_Spritesheet_resize_22: 349178046
+      siren_Spritesheet_resize_23: 802906712
+      siren_Spritesheet_resize_24: -1037990812
+      siren_Spritesheet_resize_25: -284218612
+      siren_Spritesheet_resize_26: -624838849
+      siren_Spritesheet_resize_27: 1776181131
+      siren_Spritesheet_resize_28: -1829752127
+      siren_Spritesheet_resize_29: -170373697
+      siren_Spritesheet_resize_3: 1249460994
+      siren_Spritesheet_resize_30: 1970386225
+      siren_Spritesheet_resize_31: -1294577591
+      siren_Spritesheet_resize_32: 649023604
+      siren_Spritesheet_resize_33: 338175612
+      siren_Spritesheet_resize_34: 461097589
+      siren_Spritesheet_resize_35: 682561412
+      siren_Spritesheet_resize_36: -1805528051
+      siren_Spritesheet_resize_37: -1775893728
+      siren_Spritesheet_resize_38: 1652316461
+      siren_Spritesheet_resize_39: 654027472
+      siren_Spritesheet_resize_4: -1661230774
+      siren_Spritesheet_resize_40: 1556541655
+      siren_Spritesheet_resize_41: -134309844
+      siren_Spritesheet_resize_42: 1994957382
+      siren_Spritesheet_resize_43: -1874189317
+      siren_Spritesheet_resize_44: 1815948214
+      siren_Spritesheet_resize_45: -2968673
+      siren_Spritesheet_resize_5: -1605863163
+      siren_Spritesheet_resize_6: -835462603
+      siren_Spritesheet_resize_7: 907307233
+      siren_Spritesheet_resize_8: -1109663808
+      siren_Spritesheet_resize_9: -679746456
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
