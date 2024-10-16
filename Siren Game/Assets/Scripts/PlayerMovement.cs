@@ -69,12 +69,10 @@ public class PlayerMovement : MonoBehaviour
                     transform.position = new Vector3(oldX, transform.position.y, transform.position.z);
                     if (transform.position.x > obstacle.transform.position.x)
                     {
-                        Debug.Log("t1");
                         transform.position = new Vector3(obstacle.transform.position.x + obstacle.GetComponent<BoxCollider2D>().bounds.extents.x + gameObject.GetComponent<BoxCollider2D>().bounds.extents.x + .001f, transform.position.y, transform.position.z);
                     }
                     if (transform.position.x < obstacle.transform.position.x)
                     {
-                        Debug.Log("t2");
                         transform.position = new Vector3(obstacle.transform.position.x - obstacle.GetComponent<BoxCollider2D>().bounds.extents.x - gameObject.GetComponent<BoxCollider2D>().bounds.extents.x - .001f, transform.position.y, transform.position.z);
                     }
                 }
@@ -83,12 +81,10 @@ public class PlayerMovement : MonoBehaviour
                     transform.position = new Vector3(transform.position.x, oldY, transform.position.z);
                     if (transform.position.y > obstacle.transform.position.y)
                     {
-                        Debug.Log("t3");
                         transform.position = new Vector3(transform.position.x, obstacle.transform.position.y + obstacle.GetComponent<BoxCollider2D>().bounds.extents.y + gameObject.GetComponent<BoxCollider2D>().bounds.extents.y + .001f, transform.position.z);
                     }
                     if (transform.position.y < obstacle.transform.position.y)
                     {
-                        Debug.Log("t4");
                         transform.position = new Vector3(transform.position.x, obstacle.transform.position.y - obstacle.GetComponent<BoxCollider2D>().bounds.extents.y - gameObject.GetComponent<BoxCollider2D>().bounds.extents.y - .001f, transform.position.z);
                     }
                 }
