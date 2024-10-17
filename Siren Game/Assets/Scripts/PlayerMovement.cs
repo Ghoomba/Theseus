@@ -7,6 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerMovement : MonoBehaviour
 {
     float moveSpeed;
+    float rotationSpeed;
     public float minX;
     public float minY;
     public float maxX;
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         moveSpeed = 6.0f;
+        rotationSpeed = 500.0f;
 
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
     }
@@ -26,35 +28,22 @@ public class PlayerMovement : MonoBehaviour
     {
         float oldX = transform.position.x;
         float oldY = transform.position.y;
-        // Up/Down Movement
-        if (Input.GetKey(KeyCode.W))
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector2 movementDirection = new Vector2(horizontalInput, verticalInput);
+        float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
+        movementDirection.Normalize();
+
+        transform.Translate(movementDirection * moveSpeed * inputMagnitude * Time.deltaTime, Space.World);
+
+        if (movementDirection != Vector2.zero)
         {
-            transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, movementDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.up * -moveSpeed * Time.deltaTime;
-        }
-
-        // Left/Right Movement
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += Vector3.right * -moveSpeed * Time.deltaTime;
-
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-        }
-
-
-        transform.position = new Vector3(
-            Mathf.Max(minX, Mathf.Min(transform.position.x, maxX)),
-            Mathf.Max(minY, Mathf.Min(transform.position.y, maxY)),
-        0
-        );
+        
 
         foreach (GameObject obstacle in  obstacles)
         {

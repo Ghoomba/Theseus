@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        //target = GameObject.Find("Siren");
     }
 
     // Update is called once per frame
@@ -130,6 +132,9 @@ public class EnemyMovement : MonoBehaviour
         if (gameObject.GetComponent<BoxCollider2D>().bounds.Intersects(target.GetComponent<BoxCollider2D>().bounds))
         {
             Manager.Instance.enterBattle();
+            Debug.Log("It works");
         }
+
+        
     }
 }
