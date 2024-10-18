@@ -55,7 +55,7 @@ public class Manager : MonoBehaviour
         if (state != State.Overworld)
         {
             state = State.Overworld;
-            newHunger = -1;
+            newHunger = 20;
             SceneManager.LoadScene("SirenGame");
             Console.WriteLine("starting");
         }
