@@ -12,6 +12,10 @@ public class Beats : MonoBehaviour
     public GameObject staffObject;
     public GameObject hungerMeterScriptObject;
     float bpm = 60f;
+    int fails = 0;
+    const int FAILS_LIMIT = 2;
+
+    const float TIMING_LENIENCE = 1.0f / 4.0f;
 
     const float noteStart = 0.5f;
     const float staffPos = -0.5f/3;
@@ -58,6 +62,8 @@ public class Beats : MonoBehaviour
                 queueBeat(15f, bpm, -1);
                 break;
             default:
+                bpm = 162f;
+                queueBeat(1f, bpm, -1);
                 break;
         }
     }
@@ -73,7 +79,7 @@ public class Beats : MonoBehaviour
             {
                 if (!timings[i].Item4)
                 {
-                    if (Mathf.Abs(timings[i].Item1) < 15 / bpm) //if right within a quarter beat
+                    if (Mathf.Abs(timings[i].Item1) < 60 / bpm * TIMING_LENIENCE) //if right within a quarter beat
                     {
                         switch (timings[i].Item2)
                         {
@@ -82,19 +88,19 @@ public class Beats : MonoBehaviour
                                 { continue; }
                                 break;
                             case 1:
-                                if (!Input.GetKeyDown(KeyCode.W))
+                                if (!(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
                                 { continue; }
                                 break;
                             case 2:
-                                if (!Input.GetKeyDown(KeyCode.A))
+                                if (!(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Space)))
                                 { continue; }
                                 break;
                             case 3:
-                                if (!Input.GetKeyDown(KeyCode.D))
+                                if (!(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Space)))
                                 { continue; }
                                 break;
                             case 4:
-                                if (!Input.GetKeyDown(KeyCode.S))
+                                if (!(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Space)))
                                 { continue; }
                                 break;
                         }
@@ -102,7 +108,7 @@ public class Beats : MonoBehaviour
                         timings[i] = (timings[i].Item1, timings[i].Item2, timings[i].Item3, true);
                         break;
                     }
-                    if (timings[i].Item1 > 15 / bpm) //if there are no beats yet and we've already reached a quarter beat in the future, we've missed
+                    if (timings[i].Item1 > 60 / bpm * TIMING_LENIENCE) //if there are no beats yet and we've already reached a quarter beat in the future, we've missed
                     {
                         break;
                     }
@@ -145,9 +151,13 @@ public class Beats : MonoBehaviour
                             timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
                             break;
                     }
-                    if (timings[i].Item1 < -15 / bpm)
+                    if (timings[i].Item1 < -60 / bpm * TIMING_LENIENCE)
                     {
                         timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 50f / 255f);
+                        if (fails >= FAILS_LIMIT)
+                        {
+                            Manager.Instance.exitBattle(0.0f);
+                        }
                     }
                 }
                 if (timings[i].Item2 == -1)
@@ -165,6 +175,7 @@ public class Beats : MonoBehaviour
             {
                 Object.Destroy(timings[i].Item3);
                 timings.RemoveAt(i);
+                fails += 1;
             }
             if (timings[i].Item4)
             {

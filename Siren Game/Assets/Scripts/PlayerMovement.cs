@@ -43,7 +43,13 @@ public class PlayerMovement : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, movementDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
-        
+
+        transform.position = new Vector3(
+            Mathf.Max(minX, Mathf.Min(transform.position.x, maxX)),
+            Mathf.Max(minY, Mathf.Min(transform.position.y, maxY)),
+        0
+        );
+
 
         foreach (GameObject obstacle in  obstacles)
         {
@@ -51,31 +57,89 @@ public class PlayerMovement : MonoBehaviour
             BoxCollider2D obstacleCollider = obstacle.GetComponent<BoxCollider2D>();
             if (collider.bounds.Intersects(obstacleCollider.bounds))
             {
-                //process collision
-                Vector3 closestPoint = obstacleCollider.ClosestPoint(transform.position);
-                if (Mathf.Abs(transform.position.x - closestPoint.x) > Mathf.Abs(transform.position.y - closestPoint.y))
+                Vector3 axis1 = new Vector3(-Mathf.Sin(transform.rotation.eulerAngles.z), Mathf.Cos(transform.rotation.eulerAngles.z), 0);
+                Vector3 axis2 = new Vector3(Mathf.Cos(transform.rotation.eulerAngles.z), Mathf.Sin(transform.rotation.eulerAngles.z), 0);
+                Vector3 axis3 = new Vector3(Mathf.Cos(obstacle.transform.rotation.eulerAngles.z), Mathf.Sin(obstacle.transform.rotation.eulerAngles.z), 0);
+                Vector3 axis4 = new Vector3(-Mathf.Sin(obstacle.transform.rotation.eulerAngles.z), Mathf.Cos(obstacle.transform.rotation.eulerAngles.z), 0);
+
+                Vector3[] axes = { axis1, axis2, axis3, axis4 };
+
+                Vector3 corner11 = transform.TransformPoint(new Vector3(collider.size.x / 2, collider.size.y / 2, 0));
+                Vector3 corner12 = transform.TransformPoint(new Vector3(-collider.size.x / 2, collider.size.y / 2, 0));
+                Vector3 corner13 = transform.TransformPoint(new Vector3(collider.size.x / 2, -collider.size.y / 2, 0));
+                Vector3 corner14 = transform.TransformPoint(new Vector3(-collider.size.x / 2, -collider.size.y / 2, 0));
+
+                Vector3[] corner1 = { corner11, corner12, corner13, corner14 };
+
+                Vector3 corner21 = obstacle.transform.TransformPoint(new Vector3(obstacleCollider.size.x / 2, obstacleCollider.size.y / 2, 0));
+                Vector3 corner22 = obstacle.transform.TransformPoint(new Vector3(-obstacleCollider.size.x / 2, obstacleCollider.size.y / 2, 0));
+                Vector3 corner23 = obstacle.transform.TransformPoint(new Vector3(obstacleCollider.size.x / 2, -obstacleCollider.size.y / 2, 0));
+                Vector3 corner24 = obstacle.transform.TransformPoint(new Vector3(-obstacleCollider.size.x / 2, -obstacleCollider.size.y / 2, 0));
+
+                Vector3[] corner2 = { corner21, corner22, corner23, corner24 };
+
+                float minimumPenetration = float.PositiveInfinity;
+                Vector3 penetrationAxis = Vector3.zero;
+                foreach (Vector3 axis in axes)
                 {
-                    transform.position = new Vector3(oldX, transform.position.y, transform.position.z);
-                    if (transform.position.x > obstacle.transform.position.x)
+                    float obj1Minimum = float.PositiveInfinity;
+                    float obj1Maximum = float.NegativeInfinity;
+                    float obj2Minimum = float.PositiveInfinity;
+                    float obj2Maximum = float.NegativeInfinity;
+
+                    foreach (Vector3 corner in corner1)
                     {
-                        transform.position = new Vector3(obstacle.transform.position.x + obstacle.GetComponent<BoxCollider2D>().bounds.extents.x + gameObject.GetComponent<BoxCollider2D>().bounds.extents.x + .001f, transform.position.y, transform.position.z);
+                        float proj = Vector3.Dot(corner, axis);
+                        obj1Maximum = Mathf.Max(obj1Maximum, proj);
+                        obj1Minimum = Mathf.Min(obj1Minimum, proj);
                     }
-                    if (transform.position.x < obstacle.transform.position.x)
+
+                    foreach (Vector3 corner in corner2)
                     {
-                        transform.position = new Vector3(obstacle.transform.position.x - obstacle.GetComponent<BoxCollider2D>().bounds.extents.x - gameObject.GetComponent<BoxCollider2D>().bounds.extents.x - .001f, transform.position.y, transform.position.z);
+                        float proj = Vector3.Dot(corner, axis);
+                        obj2Maximum = Mathf.Max(obj2Maximum, proj);
+                        obj2Minimum = Mathf.Min(obj2Minimum, proj);
+                    }
+
+                    //if either of the following two is true, there is a separating axis
+                    if (obj1Minimum > obj2Maximum)
+                    {
+                        minimumPenetration = float.PositiveInfinity;
+                        penetrationAxis = Vector3.zero;
+                        break;
+                    }
+                    if (obj2Minimum > obj1Maximum)
+                    {
+                        minimumPenetration = float.PositiveInfinity;
+                        penetrationAxis = Vector3.zero;
+                        break;
+                    }
+
+                    float penetration;
+                    //there is a collision. determine how deep the collision is. find the smallest collision
+                    if (obj1Maximum + obj1Minimum > obj2Maximum + obj2Minimum)
+                    {
+                        //the middle of obj1 is further along the axis than obj2
+                        penetration = obj2Maximum - obj1Minimum;
+                    }
+                    else
+                    {
+                        //the middle of obj2 is further along the axis than obj1
+                        penetration = obj2Minimum - obj1Maximum; //note: it is negative. this is intentional.
+                    }
+                    if (Mathf.Abs(penetration) < Mathf.Abs(minimumPenetration))
+                    {
+                        minimumPenetration = penetration;
+                        penetrationAxis = axis;
                     }
                 }
-                else
+                //check collision
+                if (!float.IsInfinity(minimumPenetration))
                 {
-                    transform.position = new Vector3(transform.position.x, oldY, transform.position.z);
-                    if (transform.position.y > obstacle.transform.position.y)
-                    {
-                        transform.position = new Vector3(transform.position.x, obstacle.transform.position.y + obstacle.GetComponent<BoxCollider2D>().bounds.extents.y + gameObject.GetComponent<BoxCollider2D>().bounds.extents.y + .001f, transform.position.z);
-                    }
-                    if (transform.position.y < obstacle.transform.position.y)
-                    {
-                        transform.position = new Vector3(transform.position.x, obstacle.transform.position.y - obstacle.GetComponent<BoxCollider2D>().bounds.extents.y - gameObject.GetComponent<BoxCollider2D>().bounds.extents.y - .001f, transform.position.z);
-                    }
+                    //process collision
+                    transform.position += penetrationAxis * minimumPenetration;
+                    Debug.Log(minimumPenetration);
+                    Debug.Log(penetrationAxis);
                 }
             }
         }
