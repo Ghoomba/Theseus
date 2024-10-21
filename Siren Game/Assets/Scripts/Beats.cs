@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using static TreeEditor.TreeEditorHelper;
 
 public class Beats : MonoBehaviour
 {
     List<(float, int, GameObject, bool)> timings = null;
-    float offset = -0.2370989f;
+    float offset = 0;
     public GameObject noteBasis;
     public GameObject staffObject;
     public GameObject hungerMeterScriptObject;
@@ -26,19 +27,27 @@ public class Beats : MonoBehaviour
 
     float totaloffset = 0f;
     int totalhits = 0;
+    int beatsinthepast = 0;
     // Start is called before the first frame update
     void Start()
     {
+        offset = PlayerPrefs.GetFloat("Offset", 0f);
+        if (!float.IsNormal(offset))
+        {
+            offset = 0f;
+        }
         timings = new List<(float, int, GameObject, bool)> ();
 
         switch(Manager.Instance.song)
         {
             case Manager.Songs.SoundTest:
                 bpm = 120f;
+                queueBeat(0f, bpm, -3);
                 for (int i = 4; i < 64; i++)
                 {
                     queueBeat(i, bpm, 0);
                 }
+                queueBeat(64, bpm, -1);
                 audioSource.clip = music[0];
                 audioSource.Play();
                 break;
@@ -82,6 +91,102 @@ public class Beats : MonoBehaviour
                 audioSource.clip = music[0];
                 audioSource.Play();
                 break;
+            case Manager.Songs.Incedious:
+                bpm = 120f;
+                queueBeat(0f, bpm, -3);
+                queueBeat(4f, bpm, 4);
+                queueBeat(5f, bpm, 1);
+                queueBeat(5.5f, bpm, 4);
+                queueBeat(6f, bpm, 4);
+                queueBeat(7f, bpm, 1);
+                queueBeat(7.5f, bpm, 4);
+                queueBeat(8f, bpm, 4);
+                queueBeat(9f, bpm, 1);
+                queueBeat(9.5f, bpm, 4);
+                queueBeat(10f, bpm, 4);
+                queueBeat(11f, bpm, 1);
+                queueBeat(11.5f, bpm, 4);
+                queueBeat(12f, bpm, 4);
+                queueBeat(13f, bpm, 1);
+                queueBeat(13.5f, bpm, 4);
+                queueBeat(14f, bpm, 4);
+                queueBeat(15f, bpm, 1);
+                queueBeat(15.5f, bpm, 4);
+                queueBeat(16f, bpm, 0);
+
+                //queueBeat(16.5f, bpm, 3);
+                queueBeat(17f, bpm, 3);
+                queueBeat(18f, bpm, 3);
+                queueBeat(18.75f, bpm, 3);
+                queueBeat(19.5f, bpm, 3);
+                queueBeat(20.5f, bpm, 3);
+                queueBeat(21f, bpm, 3);
+                queueBeat(22f, bpm, 3);
+                queueBeat(22.75f, bpm, 3);
+                queueBeat(23.5f, bpm, 3);
+                queueBeat(24.5f, bpm, 3);
+                queueBeat(25f, bpm, 3);
+                queueBeat(26f, bpm, 3);
+                queueBeat(26.75f, bpm, 3);
+                queueBeat(27.5f, bpm, 3);
+                queueBeat(28.5f, bpm, 3);
+                queueBeat(29f, bpm, 3);
+                queueBeat(30f, bpm, 3);
+                queueBeat(30.75f, bpm, 3);
+                queueBeat(31.5f, bpm, 3);
+                queueBeat(32f, bpm, 0);
+
+                queueBeat(33f, bpm, 2);
+                queueBeat(34f, bpm, 1);
+                queueBeat(35.5f, bpm, 2);
+                queueBeat(36f, bpm, 1);
+
+                queueBeat(37f, bpm, 2);
+                queueBeat(38f, bpm, 1);
+                queueBeat(38.5f, bpm, 2);
+                queueBeat(39.5f, bpm, 2);
+                queueBeat(40f, bpm, 1);
+                queueBeat(40.5f, bpm, 2);
+
+                queueBeat(41f, bpm, 2);
+                queueBeat(42f, bpm, 1);
+                queueBeat(43.5f, bpm, 4);
+                queueBeat(43.75f, bpm, 4);
+                queueBeat(44f, bpm, 1);
+
+                queueBeat(45.5f, bpm, 4);
+                queueBeat(45.75f, bpm, 4);
+                queueBeat(46f, bpm, 1);
+                queueBeat(46.5f, bpm, 4);
+
+                queueBeat(47.5f, bpm, 4);
+                queueBeat(48f, bpm, 1);
+
+                queueBeat(49.5f, bpm, 4);
+                queueBeat(50f, bpm, 1);
+
+                queueBeat(51.5f, bpm, 4);
+                queueBeat(52f, bpm, 1);
+                queueBeat(53f, bpm, 4);
+                queueBeat(53.5f, bpm, 4);
+                queueBeat(54f, bpm, 1);
+
+                queueBeat(55.5f, bpm, 4);
+                queueBeat(56f, bpm, 3);
+                queueBeat(57f, bpm, 2);
+                queueBeat(58f, bpm, 1);
+                queueBeat(59f, bpm, 2);
+                queueBeat(60f, bpm, 3);
+                queueBeat(61f, bpm, 1);
+                queueBeat(62f, bpm, 4);
+                queueBeat(63f, bpm, 2);
+                queueBeat(64f, bpm, 0);
+                queueBeat(68f, bpm, -1);
+
+                audioSource.clip = music[1];
+                audioSource.loop = true;
+                audioSource.Play();
+                break;
             default:
                 bpm = 162f;
                 audioSource.clip = music[0];
@@ -103,7 +208,7 @@ public class Beats : MonoBehaviour
                 hit = float.PositiveInfinity;
                 for (int i = 0; i < timings.Count; i++)
                 {
-                    if (!timings[i].Item4)
+                    if (!timings[i].Item4 && timings[i].Item2 >= 0)
                     {
                         if (Mathf.Abs(timings[i].Item1) < 60 / bpm * TIMING_LENIENCE) //if right within a quarter beat
                         {
@@ -150,7 +255,7 @@ public class Beats : MonoBehaviour
                 hit = float.PositiveInfinity;
                 for (int i = 0; i < timings.Count; i++)
                 {
-                    if (!timings[i].Item4)
+                    if (!timings[i].Item4 && timings[i].Item2 >= 0)
                     {
                         hit = timings[i].Item1; //set hit to the offset
                         timings[i] = (timings[i].Item1, timings[i].Item2, timings[i].Item3, true);
@@ -172,7 +277,7 @@ public class Beats : MonoBehaviour
             if (!timings[i].Item4)
             {
                 timings[i] = (timings[i].Item1 - Time.deltaTime, timings[i].Item2, timings[i].Item3, timings[i].Item4);
-                if (timings[i].Item1 < 120 / bpm)
+                if (timings[i].Item2 >= 0 && timings[i].Item1 < 120 / bpm)
                 {
                     switch (timings[i].Item2)
                     {
@@ -203,10 +308,17 @@ public class Beats : MonoBehaviour
                     }
                     if (timings[i].Item1 < -60 / bpm * TIMING_LENIENCE)
                     {
-                        timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 50f / 255f);
+                        timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 200f / 255f);
                         if (fails >= FAILS_LIMIT)
                         {
-                            Manager.Instance.exitBattle(0.0f);
+                            if (Manager.Instance.song != Manager.Songs.SoundTest && totalhits > 0)
+                            {
+                                Manager.Instance.exitBattle(0.0f);
+                            }
+                            else
+                            {
+                                Manager.Instance.exitBattle(totaloffset / totalhits + offset);
+                            }
                         }
                     }
                 }
@@ -214,28 +326,55 @@ public class Beats : MonoBehaviour
                 {
                     if (timings[i].Item1 < 0)
                     {
-                        Manager.Instance.exitBattle(10.0f);
+                        if (Manager.Instance.song != Manager.Songs.SoundTest && totalhits > 0)
+                        {
+                            Manager.Instance.exitBattle(2.0f);
+                        }
+                        else
+                        {
+                            Manager.Instance.exitBattle(totaloffset / totalhits + offset);
+                        }
                     }
+                }
+                if (timings[i].Item2 == -2 && timings[i].Item1 < 120 / bpm)
+                {
+                    timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0, 0);
+                    timings[i].Item3.transform.localScale = new Vector3(0.00625f, 1, 1);
+                    timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 50f/255f);
+                    timings[i].Item3.SetActive(true);
                 }
             }
         }
         for (int i = timings.Count-1; i >= 0; i--)
         {
-            if (timings[i].Item1 < -60/bpm)
+            if (timings[i].Item2 == -3)
+            {
+                continue;
+            }
+            if (timings[i].Item1 < -60 / bpm)
             {
                 Object.Destroy(timings[i].Item3);
                 timings.RemoveAt(i);
-                fails += 1;
+                if (timings[i].Item2 >= 0)
+                {
+                    fails += 1;
+                }
             }
             if (timings[i].Item4)
             {
-                timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, timings[i].Item3.GetComponent<SpriteRenderer>().color.a - Time.deltaTime * 100f / 255f);
+                timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, timings[i].Item3.GetComponent<SpriteRenderer>().color.a - Time.deltaTime * 400f / 255f);
                 if (timings[i].Item3.GetComponent<SpriteRenderer>().color.a < 0)
                 {
                     Object.Destroy(timings[i].Item3);
                     timings.RemoveAt(i);
                 }
             }
+        }
+
+        if (timings[0].Item2 == -3 && timings[0].Item1 < (-beatsinthepast) * 60 / bpm)
+        {
+            queueBeat((timings[0].Item1 + offset) * bpm / 60 + beatsinthepast + 3, bpm, -2);
+            beatsinthepast++;
         }
     }
 

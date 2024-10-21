@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Beats.cs" />
     <Compile Include="Assets\Scripts\EnemyChase.cs" />
+    <Compile Include="Assets\Scripts\SoundTestBtn.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>

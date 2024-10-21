@@ -316,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteBasis: {fileID: 1274639636}
   staffObject: {fileID: 86146363}
+  bgObject: {fileID: 0}
   hungerMeterScriptObject: {fileID: 1255993526}
   music:
   - {fileID: 8300000, guid: d3b2652b8a9d7f34a839f204036993ee, type: 3}
@@ -831,7 +832,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

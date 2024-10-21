@@ -12,7 +12,8 @@ public class Manager : MonoBehaviour
         Menu,
         Overworld,
         Battle,
-        Gameover
+        Gameover,
+        Soundtest
     }
 
     State state = State.Menu;
@@ -24,7 +25,8 @@ public class Manager : MonoBehaviour
         Null,
         Test,
         Test2,
-        SoundTest
+        SoundTest,
+        Incedious
     }
     public Songs song = Songs.Null;
 
@@ -53,7 +55,7 @@ public class Manager : MonoBehaviour
 
     public void startGame()
     {
-        if (state != State.Overworld)
+        if (state == State.Menu)
         {
             state = State.Overworld;
             newHunger = 20;
@@ -63,7 +65,7 @@ public class Manager : MonoBehaviour
 
     public void enterBattle()
     {
-        if (state != State.Battle)
+        if (state == State.Overworld)
         {
             if (UnityEngine.Random.value < 0.5f)
             {
@@ -73,7 +75,8 @@ public class Manager : MonoBehaviour
             {
                 song = Songs.Test2;
             }
-            song = Songs.SoundTest;
+            //song = Songs.SoundTest;
+            song = Songs.Incedious;
             state = State.Battle;
             newHunger = hunger;
             SceneManager.LoadScene("Battle");
@@ -82,7 +85,7 @@ public class Manager : MonoBehaviour
 
     public void lose()
     {
-        if (state != State.Gameover)
+        if (state == State.Overworld || state == State.Battle)
         {
             song = Songs.Null;
             state = State.Gameover;
@@ -99,6 +102,13 @@ public class Manager : MonoBehaviour
             newHunger = hunger + restoration;
             SceneManager.LoadScene("SirenGame");
         }
+        if (state == State.Soundtest)
+        {
+            song = Songs.Null;
+            PlayerPrefs.SetFloat("Offset", restoration);
+            state = State.Menu;
+            SceneManager.LoadScene("Menu");
+        }
     }
 
     public void toTitle()
@@ -107,6 +117,16 @@ public class Manager : MonoBehaviour
         {
             state = State.Menu;
             SceneManager.LoadScene("Menu");
+        }
+    }
+
+    public void soundTest()
+    {
+        if (state == State.Menu)
+        {
+            state = State.Soundtest;
+            song = Songs.SoundTest;
+            SceneManager.LoadScene("Battle");
         }
     }
 }
