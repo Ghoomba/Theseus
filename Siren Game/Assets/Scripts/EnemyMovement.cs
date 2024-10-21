@@ -132,7 +132,6 @@ public class EnemyMovement : MonoBehaviour
         if (gameObject.GetComponent<BoxCollider2D>().bounds.Intersects(target.GetComponent<BoxCollider2D>().bounds))
         {
             Manager.Instance.enterBattle();
-            Debug.Log("It works");
         }
 
         

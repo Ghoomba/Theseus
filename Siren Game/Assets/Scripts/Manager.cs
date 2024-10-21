@@ -23,7 +23,8 @@ public class Manager : MonoBehaviour
     {
         Null,
         Test,
-        Test2
+        Test2,
+        SoundTest
     }
     public Songs song = Songs.Null;
 
@@ -57,7 +58,6 @@ public class Manager : MonoBehaviour
             state = State.Overworld;
             newHunger = 20;
             SceneManager.LoadScene("SirenGame");
-            Console.WriteLine("starting");
         }
     }
 
@@ -73,6 +73,7 @@ public class Manager : MonoBehaviour
             {
                 song = Songs.Test2;
             }
+            song = Songs.SoundTest;
             state = State.Battle;
             newHunger = hunger;
             SceneManager.LoadScene("Battle");

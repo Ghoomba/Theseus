@@ -7,7 +7,7 @@ using UnityEngine;
 public class Beats : MonoBehaviour
 {
     List<(float, int, GameObject, bool)> timings = null;
-    float offset = 0f;
+    float offset = -0.2370989f;
     public GameObject noteBasis;
     public GameObject staffObject;
     public GameObject hungerMeterScriptObject;
@@ -18,7 +18,14 @@ public class Beats : MonoBehaviour
     const float TIMING_LENIENCE = 1.0f / 4.0f;
 
     const float noteStart = 0.5f;
-    const float staffPos = -0.5f/3;
+    const float staffPos = -0.5f / 3;
+
+    public List<AudioClip> music;
+
+    public AudioSource audioSource;
+
+    float totaloffset = 0f;
+    int totalhits = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +33,17 @@ public class Beats : MonoBehaviour
 
         switch(Manager.Instance.song)
         {
+            case Manager.Songs.SoundTest:
+                bpm = 120f;
+                for (int i = 4; i < 64; i++)
+                {
+                    queueBeat(i, bpm, 0);
+                }
+                audioSource.clip = music[0];
+                audioSource.Play();
+                break;
             case Manager.Songs.Test:
-                bpm = 162f;
+                bpm = 60f;
                 queueBeat(3, bpm, 1);
                 queueBeat(4, bpm, 1);
                 queueBeat(5, bpm, 1);
@@ -42,9 +58,12 @@ public class Beats : MonoBehaviour
                 queueBeat(13f, bpm, 1);
                 queueBeat(14f, bpm, 1);
                 queueBeat(15f, bpm, -1);
+                audioSource.clip = music[0];
+                audioSource.loop = true;
+                audioSource.Play();
                 break;
             case Manager.Songs.Test2:
-                bpm = 162f;
+                bpm = 60f;
                 queueBeat(3, bpm, 2);
                 queueBeat(3 + 2f / 3, bpm, 2);
                 queueBeat(5, bpm, 2);
@@ -60,9 +79,14 @@ public class Beats : MonoBehaviour
                 queueBeat(13, bpm, 2);
                 queueBeat(13 + 2f / 3, bpm, 2);
                 queueBeat(15f, bpm, -1);
+                audioSource.clip = music[0];
+                audioSource.Play();
                 break;
             default:
                 bpm = 162f;
+                audioSource.clip = music[0];
+                audioSource.loop = true;
+                audioSource.Play();
                 queueBeat(1f, bpm, -1);
                 break;
         }
@@ -72,50 +96,76 @@ public class Beats : MonoBehaviour
     void Update()
     {
         float hit = float.NaN;
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        if (Manager.Instance.song != Manager.Songs.SoundTest)
         {
-            hit = float.PositiveInfinity;
-            for (int i = 0; i < timings.Count; i++)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
-                if (!timings[i].Item4)
+                hit = float.PositiveInfinity;
+                for (int i = 0; i < timings.Count; i++)
                 {
-                    if (Mathf.Abs(timings[i].Item1) < 60 / bpm * TIMING_LENIENCE) //if right within a quarter beat
+                    if (!timings[i].Item4)
                     {
-                        switch (timings[i].Item2)
+                        if (Mathf.Abs(timings[i].Item1) < 60 / bpm * TIMING_LENIENCE) //if right within a quarter beat
                         {
-                            case 0:
-                                if (!Input.GetKeyDown(KeyCode.Space))
-                                { continue; }
-                                break;
-                            case 1:
-                                if (!(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
-                                { continue; }
-                                break;
-                            case 2:
-                                if (!(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Space)))
-                                { continue; }
-                                break;
-                            case 3:
-                                if (!(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Space)))
-                                { continue; }
-                                break;
-                            case 4:
-                                if (!(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Space)))
-                                { continue; }
-                                break;
+                            switch (timings[i].Item2)
+                            {
+                                case 0:
+                                    if (!Input.GetKeyDown(KeyCode.Space))
+                                    { continue; }
+                                    break;
+                                case 1:
+                                    if (!(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
+                                    { continue; }
+                                    break;
+                                case 2:
+                                    if (!(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Space)))
+                                    { continue; }
+                                    break;
+                                case 3:
+                                    if (!(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Space)))
+                                    { continue; }
+                                    break;
+                                case 4:
+                                    if (!(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Space)))
+                                    { continue; }
+                                    break;
+                            }
+                            hit = timings[i].Item1; //set hit to the offset
+                            timings[i] = (timings[i].Item1, timings[i].Item2, timings[i].Item3, true);
+                            break;
                         }
+                        if (timings[i].Item1 > 60 / bpm * TIMING_LENIENCE) //if there are no beats yet and we've already reached a quarter beat in the future, we've missed
+                        {
+                            break;
+                        }
+                    }
+                }
+                Debug.Log(hit.ToString());
+            } //if float is NaN there's nothing pressed; if float is PositiveInfinity it's a miss.
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+            {
+                hit = float.PositiveInfinity;
+                for (int i = 0; i < timings.Count; i++)
+                {
+                    if (!timings[i].Item4)
+                    {
                         hit = timings[i].Item1; //set hit to the offset
                         timings[i] = (timings[i].Item1, timings[i].Item2, timings[i].Item3, true);
                         break;
                     }
-                    if (timings[i].Item1 > 60 / bpm * TIMING_LENIENCE) //if there are no beats yet and we've already reached a quarter beat in the future, we've missed
-                    {
-                        break;
-                    }
+                }
+                if (float.IsFinite(hit))
+                {
+                    totaloffset += hit;
+                    totalhits += 1;
+                    float realoffset = totaloffset / totalhits + offset;
+                    Debug.Log(realoffset.ToString());
                 }
             }
-            Debug.Log(hit.ToString());
-        } //if float is NaN there's nothing pressed; if float is PositiveInfinity it's a miss.
+        }
 
         for (int i = 0; i < timings.Count; i++)
         {
