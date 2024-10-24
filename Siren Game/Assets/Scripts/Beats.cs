@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using static TreeEditor.TreeEditorHelper;
+using static UnityEngine.GraphicsBuffer;
 
 public class Beats : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Beats : MonoBehaviour
     public GameObject noteBasis;
     public GameObject staffObject;
     public GameObject hungerMeterScriptObject;
+    private GameObject fakeShipObject;
     float bpm = 60f;
     int fails = 0;
     const int FAILS_LIMIT = 2;
@@ -28,9 +30,17 @@ public class Beats : MonoBehaviour
     float totaloffset = 0f;
     int totalhits = 0;
     int beatsinthepast = 0;
+
+    Vector3 scaleChange;
+    Vector3 posChange;
     // Start is called before the first frame update
     void Start()
     {
+
+        scaleChange = new Vector3(0.1f, 0.1f, 0.0f);
+        posChange = new Vector3(-0.1f, -0.01f, 0.0f);
+        fakeShipObject = GameObject.Find("FakeShip");
+
         offset = PlayerPrefs.GetFloat("Offset", 0f);
         if (!float.IsNormal(offset))
         {
@@ -375,6 +385,12 @@ public class Beats : MonoBehaviour
         {
             queueBeat((timings[0].Item1 + offset) * bpm / 60 + beatsinthepast + 3, bpm, -2);
             beatsinthepast++;
+        }
+
+        if(hit < 0.0)
+        {
+            fakeShipObject.transform.localScale += scaleChange;
+            fakeShipObject.transform.localPosition += posChange;
         }
     }
 
