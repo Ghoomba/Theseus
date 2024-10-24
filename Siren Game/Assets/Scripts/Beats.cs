@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-using static TreeEditor.TreeEditorHelper;
+//using static TreeEditor.TreeEditorHelper;
 using static UnityEngine.GraphicsBuffer;
 
 public class Beats : MonoBehaviour
@@ -387,10 +387,11 @@ public class Beats : MonoBehaviour
             beatsinthepast++;
         }
 
-        if(hit < 0.0)
+        if(float.IsNormal(hit))
         {
-            fakeShipObject.transform.localScale += scaleChange;
-            fakeShipObject.transform.localPosition += posChange;
+            float factor = 1 - (hit / (60 / bpm * TIMING_LENIENCE));
+            fakeShipObject.transform.localScale += scaleChange * factor;
+            fakeShipObject.transform.localPosition += posChange * factor;
         }
     }
 
