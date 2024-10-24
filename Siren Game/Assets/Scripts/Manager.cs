@@ -10,6 +10,7 @@ public class Manager : MonoBehaviour
     enum State
     {
         Menu,
+        Controls,
         Overworld,
         Battle,
         Gameover,
@@ -117,6 +118,15 @@ public class Manager : MonoBehaviour
         {
             state = State.Menu;
             SceneManager.LoadScene("Menu");
+        }
+    }
+
+    public void toControlsScreen()
+    {
+        if (state != State.Controls)
+        {
+            state = State.Controls;
+            SceneManager.LoadScene("Controls");
         }
     }
 

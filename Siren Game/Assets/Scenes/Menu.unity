@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 1502770096}
   - component: {fileID: 1502770099}
   - component: {fileID: 1502770098}
+  - component: {fileID: 1502770100}
   m_Layer: 0
   m_Name: Controls button
   m_TagString: Untagged
@@ -610,7 +611,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502770095}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fa25159ca96fd049847bbe4c1a85b7f, type: 3}
   m_Name: 
@@ -660,6 +661,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1502770100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502770095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d2728b5d371fe40a3e3ac97c3b931f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1701328793
 GameObject:
   m_ObjectHideFlags: 0
