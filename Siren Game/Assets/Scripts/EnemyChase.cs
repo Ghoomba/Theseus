@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyChase : MonoBehaviour
 {
-    float speed;
+    private float speed;
     float rotationSpeed;
     Vector2 originalPosition;
     GameObject player;
 
-    [SerializeField] Transform[] MovePoints;
+    [SerializeField] Transform[] Points;
 
     private float distance;
     private int pointsIndex;
@@ -17,10 +17,14 @@ public class EnemyChase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 2.0f;
+        speed = 1.0f;
         rotationSpeed = 60.0f;
-        transform.position = MovePoints[pointsIndex].transform.position;
+        transform.position = Points[0].transform.position;
         player = GameObject.Find("Siren");
+
+        pointsIndex = 0;
+
+        //originalPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -49,23 +53,39 @@ public class EnemyChase : MonoBehaviour
         //    transform.position = Vector2.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime);
         //}
 
-        if (MovePoints.Length == 0)
+
+
+        if (Points.Length == 0)
         {
          
         }
         else
         {
-            Debug.Log("WORKSSSSSSSSSSSSSSSSSSSSS");
-            if (pointsIndex <= MovePoints.Length - 1)
+            
+            if (pointsIndex <= Points.Length - 1)
             {
-                this.transform.position = Vector2.MoveTowards(transform.position, MovePoints[pointsIndex].transform.position, speed * Time.deltaTime);
-                Debug.Log(pointsIndex);
-                if (transform.position == MovePoints[pointsIndex].transform.position)
+
+                distance = Vector2.Distance(transform.position, Points[pointsIndex].transform.position);
+
+                Vector2 direction = Points[pointsIndex].transform.position - transform.position;
+                direction.Normalize();
+
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                angle += -90f;
+
+                transform.position = Vector2.MoveTowards(this.transform.position, Points[pointsIndex].transform.position, speed * Time.deltaTime);
+
+                Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+
+                if (transform.position == Points[pointsIndex].transform.position)
                 {
+
                     pointsIndex += 1;
                 }
-
-                if (pointsIndex == MovePoints.Length)
+        
+                if (pointsIndex == Points.Length)
                 {
                     pointsIndex = 0;
                 }
