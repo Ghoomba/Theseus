@@ -129,6 +129,10 @@ public class EnemyMovement : MonoBehaviour
 
 
         //ok heres the actual collision part
+        if (gameObject.GetComponent<CircleCollider2D>().bounds.Intersects(target.GetComponent<CircleCollider2D>().bounds))
+        {
+            target.GetComponent<PlayerMovement>().Alert(gameObject);
+        }
         if (gameObject.GetComponent<BoxCollider2D>().bounds.Intersects(target.GetComponent<BoxCollider2D>().bounds))
         {
             Manager.Instance.enterBattle();

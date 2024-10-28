@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float maxX;
     public float maxY;
     GameObject[] obstacles;
+    GameObject trackedObj;
+    GameObject pointer;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
         rotationSpeed = 500.0f;
 
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        trackedObj = null;
+        pointer = GameObject.Find("pointer");
     }
 
     // Update is called once per frame
@@ -143,6 +147,28 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
+        pointer.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        if (trackedObj != null)
+        {
+            float totalRadii = gameObject.GetComponent<CircleCollider2D>().radius + trackedObj.GetComponent<CircleCollider2D>().radius;
+            float dist = Vector3.Distance(gameObject.transform.position, trackedObj.transform.position);
+            if (totalRadii < dist)
+            {
+                trackedObj = null;
+            }
+            else
+            {
+                float factor = 1 - dist / totalRadii;
+                pointer.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, factor);
+                
+            }
+        }
+    }
+
+    public void Alert(GameObject obj)
+    {
+        trackedObj = obj;
     }
 
 
