@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5051452737522480345}
   - component: {fileID: 7282467136695986048}
   - component: {fileID: 8195525036354924737}
+  - component: {fileID: 2096414025304393876}
   m_Layer: 0
   m_Name: ShipMedium
   m_TagString: Ship
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e34546d24534de41a08a0693601f772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!61 &7282467136695986048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -156,3 +158,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91041ddd2c8665045a83b7691c4f8743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Points: []
+--- !u!58 &2096414025304393876
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5610392998189218734}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.9250002
