@@ -1,8 +1,11 @@
-using System;
+//using System;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
+//using System.Numerics;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,8 +16,10 @@ public class PlayerMovement : MonoBehaviour
     public float maxX;
     public float maxY;
     GameObject[] obstacles;
-    GameObject trackedObj;
+    HashSet<GameObject> trackedObjs;
     GameObject pointer;
+    List<GameObject> pointerClones;
+    public float pointerDist;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +28,9 @@ public class PlayerMovement : MonoBehaviour
         rotationSpeed = 500.0f;
 
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
-        trackedObj = null;
+        trackedObjs = new HashSet<GameObject>();
         pointer = GameObject.Find("pointer");
+        pointerClones = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -147,28 +153,47 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        
+        HashSet<GameObject> toRemove = new HashSet<GameObject>();
+        int objNum = 0;
 
-        pointer.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-        if (trackedObj != null)
+        foreach (GameObject pointerClone in pointerClones) {
+            pointerClone.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        }
+        foreach (GameObject obj in trackedObjs)
         {
-            float totalRadii = gameObject.GetComponent<CircleCollider2D>().radius + trackedObj.GetComponent<CircleCollider2D>().radius;
-            float dist = Vector3.Distance(gameObject.transform.position, trackedObj.transform.position);
+            Debug.Log("ship");
+            float totalRadii = gameObject.GetComponent<CircleCollider2D>().radius + obj.GetComponent<CircleCollider2D>().radius;
+            float dist = Vector3.Distance(gameObject.transform.position, obj.transform.position);
+
+            
             if (totalRadii < dist)
             {
-                trackedObj = null;
+                toRemove.Add(obj);
             }
             else
             {
+                if (pointerClones.Count <= objNum)
+                {
+                    pointerClones.Add(Object.Instantiate(pointer, transform));
+                }
                 float factor = 1 - dist / totalRadii;
-                pointer.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, factor);
-                
+                pointerClones[objNum].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, factor);
+                pointerClones[objNum].transform.rotation = Quaternion.LookRotation(Vector3.forward, obj.transform.position - gameObject.transform.position);
+                pointerClones[objNum].transform.position = transform.position + Vector3.Normalize(obj.transform.position - gameObject.transform.position) * pointerDist;
+                objNum++;
             }
+        }
+
+        foreach (GameObject obj in toRemove)
+        {
+            trackedObjs.Remove(obj);
         }
     }
 
     public void Alert(GameObject obj)
     {
-        trackedObj = obj;
+        trackedObjs.Add(obj);
     }
 
 
