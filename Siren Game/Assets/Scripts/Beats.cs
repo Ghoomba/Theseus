@@ -318,7 +318,10 @@ public class Beats : MonoBehaviour
                     }
                     if (timings[i].Item1 < -60 / bpm * TIMING_LENIENCE)
                     {
-                        timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 200f / 255f);
+                        if (Manager.Instance.song != Manager.Songs.SoundTest)
+                        {
+                            timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 200f / 255f);
+                        }
                         if (fails >= FAILS_LIMIT)
                         {
                             if (Manager.Instance.song != Manager.Songs.SoundTest && totalhits > 0)
@@ -336,7 +339,7 @@ public class Beats : MonoBehaviour
                 {
                     if (timings[i].Item1 < 0)
                     {
-                        if (Manager.Instance.song != Manager.Songs.SoundTest && totalhits > 0)
+                        if (Manager.Instance.song != Manager.Songs.SoundTest)
                         {
                             Manager.Instance.exitBattle(2.0f);
                         }

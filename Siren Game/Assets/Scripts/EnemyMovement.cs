@@ -1,4 +1,4 @@
-using System;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -128,8 +128,10 @@ public class EnemyMovement : MonoBehaviour
         }
 
 
+        float totalRadii = gameObject.GetComponent<CircleCollider2D>().radius * transform.lossyScale.magnitude / Mathf.Sqrt(3) + target.GetComponent<CircleCollider2D>().radius * target.transform.lossyScale.magnitude / Mathf.Sqrt(3);
+        float dist = Vector3.Distance(gameObject.transform.position, target.transform.position);
         //ok heres the actual collision part
-        if (gameObject.GetComponent<CircleCollider2D>().bounds.Intersects(target.GetComponent<CircleCollider2D>().bounds))
+        if (dist < totalRadii)
         {
             target.GetComponent<PlayerMovement>().Alert(gameObject);
         }

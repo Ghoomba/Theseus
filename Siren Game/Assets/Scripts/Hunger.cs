@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
+
 //using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,7 +15,22 @@ public class Hunger : MonoBehaviour
     void Start()
     {
         meter = gameObject;
-        if (Manager.Instance.hunger >= 0)
+        /*if (Manager.Instance.newHunger >= 0)
+        {
+            hunger = Mathf.Min(Manager.Instance.newHunger, hungerMax);
+        }
+        else
+        {
+            hunger = hungerMax;
+        }*/
+
+        meter = gameObject;
+    }
+
+    void Awake()
+    {
+        Debug.Log(Manager.Instance.newHunger);
+        if (Manager.Instance.newHunger >= 0)
         {
             hunger = Mathf.Min(Manager.Instance.newHunger, hungerMax);
         }
@@ -21,12 +38,10 @@ public class Hunger : MonoBehaviour
         {
             hunger = hungerMax;
         }
-
-        meter = gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+// Update is called once per frame
+void Update()
     {
         hunger -= hungerDrainPerSecond * Time.deltaTime;
 

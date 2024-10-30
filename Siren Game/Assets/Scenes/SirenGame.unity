@@ -2004,6 +2004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Siren
       objectReference: {fileID: 0}
+    - target: {fileID: 1898333753383430552, guid: 1875ec0a6358dfe4e8d286f4687f8d09, type: 3}
+      propertyPath: m_Radius
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5047770624892230522, guid: 1875ec0a6358dfe4e8d286f4687f8d09, type: 3}
       propertyPath: m_RootOrder
       value: 3

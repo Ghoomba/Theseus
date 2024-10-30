@@ -1,5 +1,6 @@
 //using System;
 //using System;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
 //using System.Numerics;
@@ -162,8 +163,7 @@ public class PlayerMovement : MonoBehaviour
         }
         foreach (GameObject obj in trackedObjs)
         {
-            Debug.Log("ship");
-            float totalRadii = gameObject.GetComponent<CircleCollider2D>().radius + obj.GetComponent<CircleCollider2D>().radius;
+            float totalRadii = gameObject.GetComponent<CircleCollider2D>().radius * transform.lossyScale.magnitude/ Mathf.Sqrt(3) + obj.GetComponent<CircleCollider2D>().radius * obj.transform.lossyScale.magnitude / Mathf.Sqrt(3);
             float dist = Vector3.Distance(gameObject.transform.position, obj.transform.position);
 
             
