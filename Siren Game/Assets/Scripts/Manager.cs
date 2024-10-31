@@ -56,7 +56,7 @@ public class Manager : MonoBehaviour
 
     public void startGame()
     {
-        if (state == State.Menu)
+        if (state == State.Menu || state == State.Gameover)
         {
             state = State.Overworld;
             newHunger = 20;
