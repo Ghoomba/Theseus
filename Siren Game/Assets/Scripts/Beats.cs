@@ -324,7 +324,7 @@ public class Beats : MonoBehaviour
                         }
                         if (fails >= FAILS_LIMIT)
                         {
-                            if (Manager.Instance.song != Manager.Songs.SoundTest && totalhits > 0)
+                            if ((Manager.Instance.song != Manager.Songs.SoundTest) || (totalhits == 0))
                             {
                                 Manager.Instance.exitBattle(0.0f);
                             }

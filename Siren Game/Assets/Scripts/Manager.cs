@@ -51,7 +51,7 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(hunger + ", " + newHunger);
     }
 
     public void startGame()
@@ -107,8 +107,8 @@ public class Manager : MonoBehaviour
         {
             song = Songs.Null;
             PlayerPrefs.SetFloat("Offset", restoration);
-            state = State.Menu;
-            SceneManager.LoadScene("Menu");
+            state = State.Controls;
+            SceneManager.LoadScene("Controls");
         }
     }
 
@@ -132,7 +132,7 @@ public class Manager : MonoBehaviour
 
     public void soundTest()
     {
-        if (state == State.Menu)
+        if (state == State.Controls)
         {
             state = State.Soundtest;
             song = Songs.SoundTest;
