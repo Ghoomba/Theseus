@@ -393,9 +393,45 @@ public class Beats : MonoBehaviour
         if(float.IsNormal(hit))
         {
             float factor = 1 - (hit / (60 / bpm * TIMING_LENIENCE));
-            fakeShipObject.transform.localScale += scaleChange * factor;
-            fakeShipObject.transform.localPosition += posChange * factor;
+
+            //fakeShipObject.transform.localScale += scaleChange * factor;
+            //fakeShipObject.transform.localPosition += posChange * factor;
+
+            StartCoroutine(Shake(fakeShipObject));
+            
         }
+    }
+
+    public IEnumerator Shake(GameObject gameObj)
+    {
+        float shakeDuration = 0.5f; // Duration of the shake
+        float shakeMagnitude = 0.1f; // Magnitude of the shake
+        int shakeCount = 10; // Number of shakes
+
+        Vector3 originalPos = gameObj.transform.position;
+
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            float xOffset = Mathf.Sin(elapsed * shakeCount * Mathf.PI) * shakeMagnitude;
+            gameObj.transform.localPosition = new Vector3(originalPos.x + xOffset, originalPos.y, originalPos.z);
+
+            elapsed += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+
+        //for (int i = 0; i < shakeCount; i++)
+        //{
+        //    Vector3 offset = new Vector3(Random.Range(-shakeMagnitude, shakeMagnitude), 0, 0);
+        //    gameObj.transform.localPosition = originalPos + offset;
+        //
+        //    yield return new WaitForSeconds(shakeDuration / shakeCount);
+        //
+        //}
+
+        gameObj.transform.position = originalPos;
+
     }
 
     public void queueBeat(float beatCount, float bpm, int noteType)
