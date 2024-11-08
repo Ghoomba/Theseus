@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
+
 //using static TreeEditor.TreeEditorHelper;
 using static UnityEngine.GraphicsBuffer;
 
@@ -31,15 +33,25 @@ public class Beats : MonoBehaviour
     int totalhits = 0;
     int beatsinthepast = 0;
 
+    int songLength = 0;
+    float time = 0;
+
+    Hunger hungerMeterComponent;
+
+    public GameObject timeMeter;
+
+    SpriteRenderer spriteRenderer;
+
     Vector3 scaleChange;
     Vector3 posChange;
     // Start is called before the first frame update
     void Start()
     {
-
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         scaleChange = new Vector3(0.1f, 0.1f, 0.0f);
         posChange = new Vector3(-0.1f, -0.01f, 0.0f);
         fakeShipObject = GameObject.Find("FakeShip");
+        hungerMeterComponent = hungerMeterScriptObject.GetComponent<Hunger>();
 
         offset = PlayerPrefs.GetFloat("Offset", 0f);
         if (!float.IsNormal(offset))
@@ -57,6 +69,7 @@ public class Beats : MonoBehaviour
                 {
                     queueBeat(i, bpm, 0);
                 }
+                songLength = 64;
                 queueBeat(64, bpm, -1);
                 audioSource.clip = music[0];
                 audioSource.Play();
@@ -77,6 +90,7 @@ public class Beats : MonoBehaviour
                 queueBeat(13f, bpm, 1);
                 queueBeat(14f, bpm, 1);
                 queueBeat(15f, bpm, -1);
+                songLength = 15;
                 audioSource.clip = music[0];
                 audioSource.loop = true;
                 audioSource.Play();
@@ -98,6 +112,7 @@ public class Beats : MonoBehaviour
                 queueBeat(13, bpm, 2);
                 queueBeat(13 + 2f / 3, bpm, 2);
                 queueBeat(15f, bpm, -1);
+                songLength = 15;
                 audioSource.clip = music[0];
                 audioSource.Play();
                 break;
@@ -121,6 +136,7 @@ public class Beats : MonoBehaviour
                 queueBeat(13.5f, bpm, 4);
                 queueBeat(14f, bpm, 4);
                 queueBeat(15f, bpm, 1);
+                queueBeat(15f, bpm, -4);
                 queueBeat(15.5f, bpm, 4);
                 queueBeat(16f, bpm, 0);
 
@@ -143,6 +159,7 @@ public class Beats : MonoBehaviour
                 queueBeat(29f, bpm, 3);
                 queueBeat(30f, bpm, 3);
                 queueBeat(30.75f, bpm, 3);
+                queueBeat(31f, bpm, -4);
                 queueBeat(31.5f, bpm, 3);
                 queueBeat(32f, bpm, 0);
 
@@ -190,9 +207,11 @@ public class Beats : MonoBehaviour
                 queueBeat(61f, bpm, 1);
                 queueBeat(62f, bpm, 4);
                 queueBeat(63f, bpm, 2);
+                queueBeat(63f, bpm, -4);
                 queueBeat(64f, bpm, 0);
                 queueBeat(68f, bpm, -1);
 
+                songLength = 68;
                 audioSource.clip = music[1];
                 audioSource.loop = true;
                 audioSource.Play();
@@ -341,7 +360,7 @@ public class Beats : MonoBehaviour
                     {
                         if (Manager.Instance.song != Manager.Songs.SoundTest)
                         {
-                            Manager.Instance.exitBattle(2.0f);
+                            Manager.Instance.exitBattle(0.0f); //success
                         }
                         else
                         {
@@ -355,6 +374,13 @@ public class Beats : MonoBehaviour
                     timings[i].Item3.transform.localScale = new Vector3(0.00625f, 1, 1);
                     timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 50f/255f);
                     timings[i].Item3.SetActive(true);
+                }
+                if (timings[i].Item2 == -4)
+                {
+                    if (timings[i].Item1 < -60 / bpm)
+                    {
+                        hungerMeterComponent.awardHunger(1.0f);
+                    }
                 }
             }
         }
@@ -390,7 +416,7 @@ public class Beats : MonoBehaviour
             beatsinthepast++;
         }
 
-        if(float.IsNormal(hit))
+        if(float.IsNormal(hit)) //hit a note this frame
         {
             float factor = 1 - (hit / (60 / bpm * TIMING_LENIENCE));
 
@@ -398,7 +424,25 @@ public class Beats : MonoBehaviour
             //fakeShipObject.transform.localPosition += posChange * factor;
 
             StartCoroutine(Shake(fakeShipObject));
+        }
+
+        time += Time.deltaTime;
+        float songLengthSecs = songLength * 60 / bpm;
+
+        float timePercentage = time / songLengthSecs;
+        timeMeter.transform.localScale = new Vector3(timePercentage, 1, 1);
+        timeMeter.transform.localPosition = new Vector3((timePercentage - 1) / 2, 0, -1);
+
+        spriteRenderer.color = new Color(Mathf.Max(0, spriteRenderer.color.r - Time.deltaTime * 400f / 255f), 0, 0, 200f/255f);
+        if((Manager.Instance.song != Manager.Songs.SoundTest) && float.IsPositiveInfinity(hit)) //missed a note this frame
+        {
+            if (fails++ >= FAILS_LIMIT)
+            {
+                Manager.Instance.exitBattle(0.0f);
+            }
             
+            spriteRenderer.color = new Color(0.5f, 0, 0, 200f / 255f);
+
         }
     }
 
@@ -442,5 +486,10 @@ public class Beats : MonoBehaviour
             Object.Instantiate(noteBasis, staffObject.transform),
             false
         ));
+        //'real' types: 0: whole bar. 1: top. 2: middle-top. 3: middle-bottom. 4: bottom.
+        //'command' types: -1: end song. when this note is reached the song ends
+        //-2: staff background [the bpm marker]. this note is created by
+        //-3: staff background creator. put it at the beginning of a song
+        //-4: hunger refill. adds 1 to the hunger bar [after it exits. so a beat after it's queued]
     }
 }

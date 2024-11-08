@@ -57,4 +57,9 @@ void Update()
 
         Manager.Instance.hunger = hunger;
     }
+
+    public void awardHunger(float amt)
+    {
+        hunger = Mathf.Min(hunger + amt, hungerMax);
+    }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,11 +32,7 @@ public class Manager : MonoBehaviour
     }
     public Songs song = Songs.Null;
 
-    public static Manager Instance
-    {
-        get;
-        set;
-    }
+    public static Manager Instance = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,19 +42,30 @@ public class Manager : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        Instance = this;
+
+        //Debug.Log(Instance);
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(hunger + ", " + newHunger);
+        //Debug.Log(hunger + ", " + newHunger);
     }
 
     public void startGame()
     {
         if (state == State.Menu || state == State.Gameover)
         {
+            Destroy(RetainAudioPoint.instance.gameObject);
             state = State.Overworld;
             newHunger = 20;
             SceneManager.LoadScene("SirenGame");
@@ -134,6 +142,7 @@ public class Manager : MonoBehaviour
     {
         if (state == State.Controls)
         {
+            Destroy(RetainAudioPoint.instance.gameObject);
             state = State.Soundtest;
             song = Songs.SoundTest;
             SceneManager.LoadScene("Battle");
