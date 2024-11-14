@@ -232,7 +232,7 @@ public class Beats : MonoBehaviour
         float hit = float.NaN;
         if (Manager.Instance.song != Manager.Songs.SoundTest)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.Space))// || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
                 hit = float.PositiveInfinity;
                 for (int i = 0; i < timings.Count; i++)
@@ -241,7 +241,7 @@ public class Beats : MonoBehaviour
                     {
                         if (Mathf.Abs(timings[i].Item1) < 60 / bpm * TIMING_LENIENCE) //if right within a quarter beat
                         {
-                            switch (timings[i].Item2)
+                            /*switch (timings[i].Item2)
                             {
                                 case 0:
                                     if (!Input.GetKeyDown(KeyCode.Space))
@@ -263,7 +263,7 @@ public class Beats : MonoBehaviour
                                     if (!(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Space)))
                                     { continue; }
                                     break;
-                            }
+                            }*/
                             hit = timings[i].Item1; //set hit to the offset
                             timings[i] = (timings[i].Item1, timings[i].Item2, timings[i].Item3, true);
                             break;
@@ -274,12 +274,12 @@ public class Beats : MonoBehaviour
                         }
                     }
                 }
-                Debug.Log(hit.ToString());
+                //Debug.Log(hit.ToString());
             } //if float is NaN there's nothing pressed; if float is PositiveInfinity it's a miss.
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.Space))// || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
                 hit = float.PositiveInfinity;
                 for (int i = 0; i < timings.Count; i++)
@@ -296,7 +296,7 @@ public class Beats : MonoBehaviour
                     totaloffset += hit;
                     totalhits += 1;
                     float realoffset = totaloffset / totalhits + offset;
-                    Debug.Log(realoffset.ToString());
+                    //Debug.Log(realoffset.ToString());
                 }
             }
         }
@@ -393,11 +393,12 @@ public class Beats : MonoBehaviour
             if (timings[i].Item1 < -60 / bpm)
             {
                 Object.Destroy(timings[i].Item3);
-                timings.RemoveAt(i);
                 if (timings[i].Item2 >= 0)
                 {
                     fails += 1;
+                    Debug.Log(timings[i].Item2);
                 }
+                timings.RemoveAt(i);
             }
             if (timings[i].Item4)
             {
@@ -440,7 +441,7 @@ public class Beats : MonoBehaviour
             {
                 Manager.Instance.exitBattle(0.0f);
             }
-            
+            Debug.Log("no note");
             spriteRenderer.color = new Color(0.5f, 0, 0, 200f / 255f);
 
         }
