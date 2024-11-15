@@ -16,6 +16,8 @@ public class Beats : MonoBehaviour
     public GameObject staffObject;
     public GameObject hungerMeterScriptObject;
     private GameObject fakeShipObject;
+    private GameObject sailor;
+    private Animator sailorAnim;
     float bpm = 60f;
     int fails = 0;
     const int FAILS_LIMIT = 2;
@@ -32,6 +34,10 @@ public class Beats : MonoBehaviour
     float totaloffset = 0f;
     int totalhits = 0;
     int beatsinthepast = 0;
+
+    int walkBeatAmt = 0;
+    int remainingFails = 0;
+    float sailorStartX = 0;
 
     int songLength = 0;
     float time = 0;
@@ -52,6 +58,10 @@ public class Beats : MonoBehaviour
         posChange = new Vector3(-0.1f, -0.01f, 0.0f);
         fakeShipObject = GameObject.Find("FakeShip");
         hungerMeterComponent = hungerMeterScriptObject.GetComponent<Hunger>();
+
+        sailor = GameObject.Find("sailor");
+        sailorAnim = sailor.GetComponent<Animator>();
+        sailorStartX = sailor.transform.localPosition.x;
 
         offset = PlayerPrefs.GetFloat("Offset", 0f);
         if (!float.IsNormal(offset))
@@ -376,6 +386,9 @@ public class Beats : MonoBehaviour
                 queueBeat(1f, bpm, -1);
                 break;
         }
+
+        walkBeatAmt = songLength;
+        remainingFails = FAILS_LIMIT+1;
     }
 
     // Update is called once per frame
@@ -515,6 +528,15 @@ public class Beats : MonoBehaviour
                     }
                     if (timings[i].Item1 < -60 / bpm * TIMING_LENIENCE)
                     {
+                        float sailorCurrentX = sailor.transform.localPosition.x;
+
+                        if (sailor.transform.localPosition.x < 5.82f)
+                        {
+                            sailor.GetComponent<SpriteRenderer>().flipX = true;
+                            sailor.transform.localPosition -= new Vector3((sailorCurrentX - sailorStartX) / remainingFails, 0.0f, 0.0f);
+                            sailorAnim.SetTrigger("tWalk");
+                        }                        
+
                         if (Manager.Instance.song != Manager.Songs.SoundTest)
                         {
                             timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 200f / 255f);
@@ -529,6 +551,8 @@ public class Beats : MonoBehaviour
                             {
                                 Manager.Instance.exitBattle(totaloffset / totalhits + offset);
                             }
+
+                            remainingFails = FAILS_LIMIT + 1;
                         }
                     }
                 }
@@ -544,6 +568,9 @@ public class Beats : MonoBehaviour
                         {
                             Manager.Instance.exitBattle(totaloffset / totalhits + offset);
                         }
+
+                        remainingFails = FAILS_LIMIT + 1;
+                        walkBeatAmt = songLength;
                     }
                 }
                 if (timings[i].Item2 == -2 && timings[i].Item1 < 120 / bpm)
@@ -574,6 +601,8 @@ public class Beats : MonoBehaviour
                 if (timings[i].Item2 >= 0)
                 {
                     fails += 1;
+                    --walkBeatAmt;
+                    --remainingFails;
                     Debug.Log(timings[i].Item2);
                 }
                 timings.RemoveAt(i);
@@ -602,7 +631,31 @@ public class Beats : MonoBehaviour
             //fakeShipObject.transform.localScale += scaleChange * factor;
             //fakeShipObject.transform.localPosition += posChange * factor;
 
-            StartCoroutine(Shake(fakeShipObject));
+            //StartCoroutine(Shake(fakeShipObject));
+            
+            if (sailor.transform.localPosition.x >= 1.36)
+            {
+                if (Manager.Instance.song != Manager.Songs.SoundTest)
+                {
+                    if(walkBeatAmt <= 0)
+                        walkBeatAmt = 1;
+
+                    sailor.transform.localPosition += new Vector3((0.8f - sailor.transform.localPosition.x) / (walkBeatAmt - 42), 0.0f, 0.0f);
+                    sailorAnim.SetTrigger("tWalk");
+                }
+                else
+                {
+                    if (walkBeatAmt <= 0)
+                        walkBeatAmt = 1;
+
+                    sailor.transform.localPosition += new Vector3((0.8f - sailor.transform.localPosition.x) / walkBeatAmt, 0.0f, 0.0f);
+                    sailorAnim.SetTrigger("tWalk");
+                }
+
+                sailor.GetComponent<SpriteRenderer>().flipX = false;
+            }             
+
+            walkBeatAmt--;
         }
 
         time += Time.deltaTime;
@@ -615,9 +668,19 @@ public class Beats : MonoBehaviour
         spriteRenderer.color = new Color(Mathf.Max(0, spriteRenderer.color.r - Time.deltaTime * 400f / 255f), 0, 0, 200f/255f);
         if((Manager.Instance.song != Manager.Songs.SoundTest) && float.IsPositiveInfinity(hit)) //missed a note this frame
         {
+            float sailorCurrentX = sailor.transform.localPosition.x;
+
+            if (sailor.transform.localPosition.x < 5.82f)
+            {
+                sailor.transform.localPosition -= new Vector3((sailorCurrentX - sailorStartX) / remainingFails, 0.0f, 0.0f);
+                sailorAnim.SetTrigger("tWalk");
+                sailor.GetComponent<SpriteRenderer>().flipX = true;
+            }
+
             if (fails++ >= FAILS_LIMIT)
             {
                 Manager.Instance.exitBattle(0.0f);
+                remainingFails = FAILS_LIMIT+1;
             }
             Debug.Log("no note");
             spriteRenderer.color = new Color(0.5f, 0, 0, 200f / 255f);
