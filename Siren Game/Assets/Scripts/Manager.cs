@@ -28,7 +28,8 @@ public class Manager : MonoBehaviour
         Test,
         Test2,
         SoundTest,
-        Incedious
+        Incedious,
+        Pride
     }
     public Songs song = Songs.Null;
 
@@ -85,7 +86,7 @@ public class Manager : MonoBehaviour
                 song = Songs.Test2;
             }
             //song = Songs.SoundTest;
-            song = Songs.Incedious;
+            song = Songs.Pride;
             state = State.Battle;
             newHunger = hunger;
             SceneManager.LoadScene("Battle");

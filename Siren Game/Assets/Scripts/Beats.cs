@@ -216,6 +216,158 @@ public class Beats : MonoBehaviour
                 audioSource.loop = true;
                 audioSource.Play();
                 break;
+            case Manager.Songs.Pride:
+                bpm = 190f;
+                queueBeat(0f, bpm, -3);
+
+                queueBeat(16f, bpm, 0);
+                queueBeat(17f, bpm, 0);
+                queueBeat(18f, bpm, 0);
+                queueBeat(18.5f, bpm, 0);
+                queueBeat(19.5f, bpm, 5);
+                queueBeat(23f, bpm, 10);
+
+                queueBeat(24f, bpm, 0);
+                queueBeat(25f, bpm, 0);
+                queueBeat(26f, bpm, 0);
+                queueBeat(26.5f, bpm, 0);
+                queueBeat(27.5f, bpm, 5);
+                queueBeat(31f, bpm, 10);
+
+                queueBeat(32f, bpm, 5);
+                queueBeat(33f, bpm, 10);
+                queueBeat(34f, bpm, 0);
+                queueBeat(34f + 2f / 3, bpm, 0);
+                queueBeat(34f + 4f / 3, bpm, 0);
+                queueBeat(36f, bpm, 5);
+                queueBeat(37f, bpm, 10);
+                queueBeat(38f, bpm, 0);
+                queueBeat(38f + 2f / 3, bpm, 0);
+                queueBeat(38f + 4f / 3, bpm, 0);
+                queueBeat(40f, bpm, 5);
+                queueBeat(41f, bpm, 10);
+                queueBeat(42f, bpm, 5);
+                queueBeat(43f, bpm, 10);
+                queueBeat(44f, bpm, 5);
+                queueBeat(45f, bpm, 10);
+                queueBeat(46f, bpm, 5);
+                queueBeat(47f, bpm, 10);
+
+                queueBeat(47f, bpm, -4);
+                queueBeat(48f, bpm, 0);
+                queueBeat(49.5f, bpm, 0);
+                queueBeat(50f, bpm, 0);
+                queueBeat(50.5f, bpm, 0);
+                queueBeat(51.5f, bpm, 5);
+                queueBeat(55f, bpm, 10);
+
+                queueBeat(56f, bpm, 0);
+                queueBeat(57.5f, bpm, 0);
+                queueBeat(58f, bpm, 0);
+                queueBeat(59f, bpm, 0);
+                queueBeat(60f, bpm, 5);
+                queueBeat(61f, bpm, 10);
+                queueBeat(62f, bpm, 0);
+                queueBeat(62f + 2f / 3, bpm, 0);
+                queueBeat(62f + 4f / 3, bpm, 0);
+                queueBeat(64f, bpm, 5);
+                queueBeat(65f, bpm, 10);
+                queueBeat(66f, bpm, 5);
+                queueBeat(67f, bpm, 10);
+                queueBeat(67.5f, bpm, 0);
+                queueBeat(68f, bpm, 5);
+                queueBeat(69f, bpm, 10);
+                queueBeat(70f, bpm, 0);
+                queueBeat(70.5f, bpm, 5);
+                queueBeat(71f, bpm, 10);
+
+                queueBeat(72f, bpm, 5);
+                queueBeat(73f, bpm, 10);
+                queueBeat(74f, bpm, 5);
+                queueBeat(75f, bpm, 10);
+                queueBeat(76f, bpm, 5);
+                queueBeat(77f, bpm, 10);
+                queueBeat(78f, bpm, 5);
+                queueBeat(79f, bpm, 10);
+
+                queueBeat(79f, bpm, -4);
+                queueBeat(80f, bpm, 0);
+                queueBeat(81f, bpm, 0);
+                queueBeat(82f, bpm, 0);
+                queueBeat(83f, bpm, 0);
+                queueBeat(84f, bpm, 5);
+                queueBeat(86f, bpm, 10);
+                queueBeat(87f, bpm, 0);
+                queueBeat(88f, bpm, 5);
+                queueBeat(90f, bpm, 10);
+                queueBeat(91f, bpm, 0);
+                queueBeat(91.5f, bpm, 0);
+                queueBeat(92f, bpm, 5);
+                queueBeat(94f, bpm, 10);
+                queueBeat(95f, bpm, 0);
+
+                queueBeat(96f, bpm, 0);
+                queueBeat(97.5f, bpm, 0);
+                queueBeat(99f, bpm, 0);
+                queueBeat(100f, bpm, 5);
+                queueBeat(102f, bpm, 10);
+                queueBeat(103f, bpm, 0);
+                queueBeat(104f, bpm, 0);
+                queueBeat(105f, bpm, 0);
+                queueBeat(106f, bpm, 0);
+                queueBeat(107f, bpm, 0);
+                queueBeat(108f, bpm, 0);
+                queueBeat(109f, bpm, 0);
+                queueBeat(110f, bpm, 0);
+                queueBeat(111f, bpm, 0);
+
+                queueBeat(111f, bpm, -4);
+                queueBeat(112f, bpm, 0);
+                queueBeat(113.5f, bpm, 0);
+                queueBeat(115f, bpm, 0);
+                queueBeat(116f, bpm, 5);
+                queueBeat(118f, bpm, 10);
+                queueBeat(119f, bpm, 0);
+                queueBeat(119.5f, bpm, 0);
+                queueBeat(120f, bpm, 0);
+                queueBeat(121.5f, bpm, 0);
+                queueBeat(123f, bpm, 0);
+                queueBeat(124f, bpm, 5);
+                queueBeat(125f, bpm, 10);
+                queueBeat(126f, bpm, 0);
+                queueBeat(127f, bpm, 0);
+                queueBeat(128f, bpm, 5);
+                queueBeat(129f, bpm, 10);
+                queueBeat(130f, bpm, 5);
+                queueBeat(131f, bpm, 10);
+                queueBeat(132f, bpm, 5);
+                queueBeat(133f, bpm, 10);
+                queueBeat(134f, bpm, 5);
+                queueBeat(135f, bpm, 10);
+
+                queueBeat(136f + 0f / 3, bpm, 0);
+                queueBeat(136f + 2f / 3, bpm, 0);
+                queueBeat(136f + 4f / 3, bpm, 0);
+                queueBeat(138f + 0f / 3, bpm, 0);
+                queueBeat(138f + 2f / 3, bpm, 0);
+                queueBeat(138f + 4f / 3, bpm, 0);
+                queueBeat(140f + 0f / 3, bpm, 0);
+                queueBeat(140f + 2f / 3, bpm, 0);
+                queueBeat(140f + 4f / 3, bpm, 0);
+                queueBeat(142f + 0f / 3, bpm, 0);
+                queueBeat(142f + 2f / 3, bpm, 0);
+                queueBeat(142f + 4f / 3, bpm, 0);
+
+                queueBeat(144f, bpm, 5);
+                queueBeat(155f, bpm, -4);
+                queueBeat(156f, bpm, 10);
+
+                queueBeat(168f, bpm, -1);
+                songLength = 168;
+                audioSource.clip = music[2];
+                audioSource.loop = false;
+                audioSource.Play();
+                break;
             default:
                 bpm = 162f;
                 audioSource.clip = music[0];
@@ -232,9 +384,12 @@ public class Beats : MonoBehaviour
         float hit = float.NaN;
         if (Manager.Instance.song != Manager.Songs.SoundTest)
         {
-            if (Input.GetKeyDown(KeyCode.Space))// || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyUp(KeyCode.Space))// || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
-                hit = float.PositiveInfinity;
+                bool miss = false;
+                if (Input.GetKeyDown(KeyCode.Space)) {
+                    hit = float.PositiveInfinity;
+                }
                 for (int i = 0; i < timings.Count; i++)
                 {
                     if (!timings[i].Item4 && timings[i].Item2 >= 0)
@@ -264,15 +419,29 @@ public class Beats : MonoBehaviour
                                     { continue; }
                                     break;
                             }*/
+                            if (timings[i].Item2 <= 9)
+                            {
+                                if (!Input.GetKeyDown(KeyCode.Space))
+                                { continue; }
+                            } else
+                            {
+                                if (!Input.GetKeyUp(KeyCode.Space))
+                                { continue; }
+                            }
                             hit = timings[i].Item1; //set hit to the offset
                             timings[i] = (timings[i].Item1, timings[i].Item2, timings[i].Item3, true);
                             break;
                         }
                         if (timings[i].Item1 > 60 / bpm * TIMING_LENIENCE) //if there are no beats yet and we've already reached a quarter beat in the future, we've missed
                         {
+                            miss = true;
                             break;
                         }
                     }
+                }
+                if (hit == float.PositiveInfinity && !miss) //only happens if there's no more normal notes
+                {
+                    hit = float.NaN;
                 }
                 //Debug.Log(hit.ToString());
             } //if float is NaN there's nothing pressed; if float is PositiveInfinity it's a miss.
@@ -308,7 +477,7 @@ public class Beats : MonoBehaviour
                 timings[i] = (timings[i].Item1 - Time.deltaTime, timings[i].Item2, timings[i].Item3, timings[i].Item4);
                 if (timings[i].Item2 >= 0 && timings[i].Item1 < 120 / bpm)
                 {
-                    switch (timings[i].Item2)
+                    switch (timings[i].Item2 % 5)
                     {
                         case 0:
                             timings[i].Item3.SetActive(true);
@@ -333,6 +502,15 @@ public class Beats : MonoBehaviour
                             timings[i].Item3.SetActive(true);
                             timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), -0.375f, 0);
                             timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
+                            break;
+                    }
+                    switch (timings[i].Item2 / 5)
+                    {
+                        case 1:
+                            timings[i].Item3.GetComponent<SpriteRenderer>().color = Color.yellow;
+                            break;
+                        case 2:
+                            timings[i].Item3.GetComponent<SpriteRenderer>().color = Color.blue;
                             break;
                     }
                     if (timings[i].Item1 < -60 / bpm * TIMING_LENIENCE)
@@ -487,7 +665,7 @@ public class Beats : MonoBehaviour
             Object.Instantiate(noteBasis, staffObject.transform),
             false
         ));
-        //'real' types: 0: whole bar. 1: top. 2: middle-top. 3: middle-bottom. 4: bottom.
+        //'real' types: 0: whole bar. 1: top. 2: middle-top. 3: middle-bottom. 4: bottom. 5-9: hold starts. 10-14: hold ends
         //'command' types: -1: end song. when this note is reached the song ends
         //-2: staff background [the bpm marker]. this note is created by
         //-3: staff background creator. put it at the beginning of a song
