@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
+using static TreeEditor.TreeEditorHelper;
+
 
 //using static TreeEditor.TreeEditorHelper;
 using static UnityEngine.GraphicsBuffer;
@@ -521,9 +523,18 @@ public class Beats : MonoBehaviour
                     {
                         case 1:
                             timings[i].Item3.GetComponent<SpriteRenderer>().color = Color.yellow;
+                            if (timings[i+1].Item2 != -timings[i].Item2)
+                            {
+                                timings.Insert(i + 1, (
+                                    timings[i].Item1 + .075f / bpm * 60,
+                                    -timings[i].Item2,
+                                    Object.Instantiate(noteBasis, staffObject.transform),
+                                    false
+                                ));
+                            }
                             break;
                         case 2:
-                            timings[i].Item3.GetComponent<SpriteRenderer>().color = Color.blue;
+                            timings[i].Item3.GetComponent<SpriteRenderer>().color = Color.yellow;
                             break;
                     }
                     if (timings[i].Item1 < -60 / bpm * TIMING_LENIENCE)
@@ -587,6 +598,49 @@ public class Beats : MonoBehaviour
                         hungerMeterComponent.awardHunger(1.0f);
                     }
                 }
+                if (timings[i].Item2 <= -5 && timings[i].Item2 > -10)
+                {
+                    if (timings[i+1].Item2 != timings[i].Item2 && timings[i+1].Item1 - timings[i].Item1 > .075f / bpm * 60 && timings[i + 1].Item1 > 60/bpm)
+                    {
+                        timings.Insert(i+1, (
+                            timings[i].Item1 + .075f / bpm * 60,
+                            timings[i].Item2,
+                            Object.Instantiate(noteBasis, staffObject.transform),
+                            false
+                        ));
+                    }
+                    if (timings[i].Item1 < 120 / bpm)
+                    {
+                        switch (-timings[i].Item2 % 5)
+                        {
+                            case 0:
+                                timings[i].Item3.SetActive(true);
+                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0, 0);
+                                break;
+                            case 1:
+                                timings[i].Item3.SetActive(true);
+                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0.375f, 0);
+                                timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
+                                break;
+                            case 2:
+                                timings[i].Item3.SetActive(true);
+                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0.125f, 0);
+                                timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
+                                break;
+                            case 3:
+                                timings[i].Item3.SetActive(true);
+                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), -0.125f, 0);
+                                timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
+                                break;
+                            case 4:
+                                timings[i].Item3.SetActive(true);
+                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), -0.375f, 0);
+                                timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
+                                break;
+                        }
+                    }
+                    timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, .92f, .016f, .1f);
+                }
             }
         }
         for (int i = timings.Count-1; i >= 0; i--)
@@ -594,6 +648,11 @@ public class Beats : MonoBehaviour
             if (timings[i].Item2 == -3)
             {
                 continue;
+            }
+            if (timings[i].Item1 < 0 && timings[i].Item2 <= -5 && timings[i].Item2 > -10)
+            {
+                Object.Destroy(timings[i].Item3);
+                timings.RemoveAt(i);
             }
             if (timings[i].Item1 < -60 / bpm)
             {
@@ -733,5 +792,6 @@ public class Beats : MonoBehaviour
         //-2: staff background [the bpm marker]. this note is created by
         //-3: staff background creator. put it at the beginning of a song
         //-4: hunger refill. adds 1 to the hunger bar [after it exits. so a beat after it's queued]
+        //-5 - -9: hold intermediaries
     }
 }
