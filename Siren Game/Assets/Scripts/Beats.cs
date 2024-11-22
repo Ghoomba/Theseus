@@ -88,6 +88,7 @@ public class Beats : MonoBehaviour
                 break;
             case Manager.Songs.Test:
                 bpm = 60f;
+                queueBeat(0f, bpm, -3);
                 queueBeat(3, bpm, 1);
                 queueBeat(4, bpm, 1);
                 queueBeat(5, bpm, 1);
@@ -101,8 +102,13 @@ public class Beats : MonoBehaviour
                 queueBeat(12.5f, bpm, 4);
                 queueBeat(13f, bpm, 1);
                 queueBeat(14f, bpm, 1);
-                queueBeat(15f, bpm, -1);
-                songLength = 15;
+
+                queueBeat(16f, bpm, 5);
+                queueBeat(27f, bpm, -4);
+                queueBeat(28f, bpm, 10);
+
+                queueBeat(32f, bpm, -1);
+                songLength = 32;
                 audioSource.clip = music[0];
                 audioSource.loop = true;
                 audioSource.Play();
@@ -358,21 +364,21 @@ public class Beats : MonoBehaviour
                 queueBeat(135f, bpm, 10);
 
                 queueBeat(136f + 0f / 3, bpm, 0);
-                queueBeat(136f + 2f / 3, bpm, 0);
-                queueBeat(136f + 4f / 3, bpm, 0);
-                queueBeat(138f + 0f / 3, bpm, 0);
-                queueBeat(138f + 2f / 3, bpm, 0);
-                queueBeat(138f + 4f / 3, bpm, 0);
-                queueBeat(140f + 0f / 3, bpm, 0);
-                queueBeat(140f + 2f / 3, bpm, 0);
-                queueBeat(140f + 4f / 3, bpm, 0);
-                queueBeat(142f + 0f / 3, bpm, 0);
-                queueBeat(142f + 2f / 3, bpm, 0);
+                queueBeat(136f + 2f / 3, bpm, 1);
+                queueBeat(136f + 4f / 3, bpm, 2);
+                queueBeat(138f + 0f / 3, bpm, 1);
+                queueBeat(138f + 2f / 3, bpm, 2);
+                queueBeat(138f + 4f / 3, bpm, 3);
+                queueBeat(140f + 0f / 3, bpm, 2);
+                queueBeat(140f + 2f / 3, bpm, 3);
+                queueBeat(140f + 4f / 3, bpm, 4);
+                queueBeat(142f + 0f / 3, bpm, 3);
+                queueBeat(142f + 2f / 3, bpm, 4);
                 queueBeat(142f + 4f / 3, bpm, 0);
 
-                queueBeat(144f, bpm, 5);
+                queueBeat(144f, bpm, 6);
                 queueBeat(155f, bpm, -4);
-                queueBeat(156f, bpm, 10);
+                queueBeat(156f, bpm, 11);
 
                 queueBeat(168f, bpm, -1);
                 songLength = 168;
@@ -608,6 +614,15 @@ public class Beats : MonoBehaviour
                             Object.Instantiate(noteBasis, staffObject.transform),
                             false
                         ));
+                        if (timings[i+2].Item1 - timings[i+1].Item1 <= .075f / bpm * 60 && timings[i+2].Item2 != (5-timings[i+1].Item2)) //'jump' over notes that aren't the proper end
+                        {
+                            timings.Insert(i+3, (
+                                timings[i].Item1 + 2 * .075f / bpm * 60,
+                                timings[i].Item2,
+                                Object.Instantiate(noteBasis, staffObject.transform),
+                                false
+                            ));
+                        }
                     }
                     if (timings[i].Item1 < 120 / bpm)
                     {
