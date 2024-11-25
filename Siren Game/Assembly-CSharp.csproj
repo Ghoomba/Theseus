@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\OWCameraMovement.cs" />
     <Compile Include="Assets\Scripts\PlayBtn.cs" />
+    <Compile Include="Assets\Scripts\GenericBtn.cs" />
     <Compile Include="Assets\Scripts\Hunger.cs" />
     <Compile Include="Assets\Scripts\MenuBtn.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
-    enum State
+    public enum State
     {
         Menu,
         Controls,
@@ -147,6 +147,25 @@ public class Manager : MonoBehaviour
             state = State.Soundtest;
             song = Songs.SoundTest;
             SceneManager.LoadScene("Battle");
+        }
+    }
+
+    public void btnState(State state)
+    {
+        switch(state)
+        {
+            case State.Menu:
+                Manager.Instance.toTitle();
+                break;
+            case State.Controls:
+                Manager.Instance.toControlsScreen();
+                break;
+            case State.Soundtest:
+                Manager.Instance.soundTest();
+                break;
+            case State.Overworld:
+                Manager.Instance.startGame();
+                break;
         }
     }
 }
