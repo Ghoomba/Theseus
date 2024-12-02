@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 59149136}
   - component: {fileID: 59149138}
   - component: {fileID: 59149139}
+  - component: {fileID: 59149140}
   m_Layer: 0
   m_Name: Calibrate Button
   m_TagString: Untagged
@@ -265,6 +266,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.86, y: 0.88}
   m_EdgeRadius: 0
+--- !u!114 &59149140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59149134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8be5df97d89c6e4fbfca79978ffb60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 5
 --- !u!1 &123961315
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +608,7 @@ GameObject:
   - component: {fileID: 2006053115}
   - component: {fileID: 2006053117}
   - component: {fileID: 2006053118}
+  - component: {fileID: 2006053119}
   m_Layer: 0
   m_Name: Quit Button
   m_TagString: Untagged
@@ -675,7 +690,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006053114}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37383c8854f10b444a0e00057c286e1a, type: 3}
   m_Name: 
@@ -725,6 +740,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.86, y: 0.88}
   m_EdgeRadius: 0
+--- !u!114 &2006053119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006053114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8be5df97d89c6e4fbfca79978ffb60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -15,7 +15,8 @@ public class Manager : MonoBehaviour
         Overworld,
         Battle,
         Gameover,
-        Soundtest
+        Soundtest,
+        Close
     }
 
     State state = State.Menu;
@@ -29,7 +30,8 @@ public class Manager : MonoBehaviour
         Test2,
         SoundTest,
         Incedious,
-        Pride
+        Pride,
+        Wrath
     }
     public Songs song = Songs.Null;
 
@@ -73,20 +75,21 @@ public class Manager : MonoBehaviour
         }
     }
 
-    public void enterBattle()
+    public void enterBattle(Songs song)
     {
         if (state == State.Overworld)
         {
-            if (UnityEngine.Random.value < 0.5f)
+            /*if (UnityEngine.Random.value < 0.5f)
             {
                 song = Songs.Test;
             }
             else
             {
                 song = Songs.Test2;
-            }
+            }*/
             //song = Songs.SoundTest;
-            song = Songs.Pride;
+            //song = Songs.Pride;
+            this.song = song;
             state = State.Battle;
             newHunger = hunger;
             SceneManager.LoadScene("Battle");
@@ -165,6 +168,10 @@ public class Manager : MonoBehaviour
                 break;
             case State.Overworld:
                 Manager.Instance.startGame();
+                break;
+            case State.Close:
+                Application.Quit();
+                Debug.Log("Quitting!");
                 break;
         }
     }

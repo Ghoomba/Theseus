@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 514351208}
   - component: {fileID: 514351207}
   - component: {fileID: 514351209}
+  - component: {fileID: 514351210}
   m_Layer: 0
   m_Name: Quit Button
   m_TagString: Untagged
@@ -490,6 +491,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.86, y: 0.88}
   m_EdgeRadius: 0
+--- !u!114 &514351210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514351206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8be5df97d89c6e4fbfca79978ffb60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 6
 --- !u!1 &541762893
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +516,7 @@ GameObject:
   - component: {fileID: 541762894}
   - component: {fileID: 541762896}
   - component: {fileID: 541762897}
+  - component: {fileID: 541762898}
   m_Layer: 0
   m_Name: Play button
   m_TagString: Untagged
@@ -583,7 +598,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541762893}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf8de76b437a0d447af65b73e8e1959b, type: 3}
   m_Name: 
@@ -633,6 +648,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &541762898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541762893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8be5df97d89c6e4fbfca79978ffb60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 2
 --- !u!1 &1304190896
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +824,7 @@ GameObject:
   - component: {fileID: 1502770099}
   - component: {fileID: 1502770098}
   - component: {fileID: 1502770100}
+  - component: {fileID: 1502770101}
   m_Layer: 0
   m_Name: Controls button
   m_TagString: Untagged
@@ -934,11 +963,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502770095}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01d2728b5d371fe40a3e3ac97c3b931f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1502770101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502770095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8be5df97d89c6e4fbfca79978ffb60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 1
 --- !u!1 &1701328793
 GameObject:
   m_ObjectHideFlags: 0

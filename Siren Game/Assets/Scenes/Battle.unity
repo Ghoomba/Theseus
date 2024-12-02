@@ -321,6 +321,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d3b2652b8a9d7f34a839f204036993ee, type: 3}
   - {fileID: 8300000, guid: f47921d45a32b9f499b2d5d8ae26e858, type: 3}
   - {fileID: 8300000, guid: b8d2af49f09a0d849b5e2438e1ceb0df, type: 3}
+  - {fileID: 8300000, guid: 8ab77fda207b47f4cb402fd76c171063, type: 3}
   audioSource: {fileID: 1609927903}
   timeMeter: {fileID: 631826003}
 --- !u!1 &165252442

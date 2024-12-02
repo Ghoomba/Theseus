@@ -52,6 +52,8 @@ public class Beats : MonoBehaviour
 
     Vector3 scaleChange;
     Vector3 posChange;
+
+    bool heldDown = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -386,6 +388,135 @@ public class Beats : MonoBehaviour
                 audioSource.loop = false;
                 audioSource.Play();
                 break;
+            case Manager.Songs.Wrath:
+                bpm = 195f;
+
+                queueBeat(0f, bpm, -3);
+
+                queueBeat(4f, bpm, 5);
+                queueBeat(6f, bpm, 10);
+                queueBeat(7f, bpm, 0);
+                queueBeat(7.5f, bpm, 0);
+                queueBeat(8f, bpm, 5);
+                queueBeat(9.5f, bpm, 10);
+                queueBeat(10f, bpm, 5);
+                queueBeat(11.5f, bpm, 10);
+                queueBeat(12f, bpm, 5);
+                queueBeat(13.5f, bpm, 10);
+                queueBeat(14f, bpm, 5);
+                queueBeat(15.5f, bpm, 10);
+
+                queueBeat(16f, bpm, 5);
+                queueBeat(18f, bpm, 10);
+                queueBeat(18f + 2f / 3, bpm, 0);
+                queueBeat(18f + 4f / 3, bpm, 0);
+                queueBeat(20f, bpm, 5);
+                queueBeat(22f, bpm, 10);
+                queueBeat(23f, bpm, 0);
+                queueBeat(23.5f, bpm, 0);
+                queueBeat(24f, bpm, 5);
+                queueBeat(25.5f, bpm, 10);
+                queueBeat(26f, bpm, 5);
+                queueBeat(27.5f, bpm, 10);
+                queueBeat(28f, bpm, 5);
+                queueBeat(29.5f, bpm, 10);
+                queueBeat(30f, bpm, 5);
+                queueBeat(31.5f, bpm, 10);
+
+                queueBeat(32f, bpm, 5);
+                queueBeat(34f, bpm, 10);
+                queueBeat(34f + 2f / 3, bpm, 0);
+                queueBeat(34f + 4f / 3, bpm, 0);
+                queueBeat(36f, bpm, 5);
+                queueBeat(38f, bpm, 10);
+                queueBeat(39f, bpm, 0);
+                queueBeat(39.5f, bpm, 0);
+                queueBeat(40f, bpm, 5);
+                queueBeat(41.5f, bpm, 10);
+                queueBeat(42f, bpm, 5);
+                queueBeat(43.5f, bpm, 10);
+                queueBeat(44f, bpm, 5);
+                queueBeat(45.5f, bpm, 10);
+                queueBeat(46f, bpm, 5);
+                queueBeat(47.5f, bpm, 10);
+
+                queueBeat(48f, bpm, 5);
+                queueBeat(50f, bpm, 10);
+                queueBeat(50f + 2f / 3, bpm, 0);
+                queueBeat(50f + 4f / 3, bpm, 0);
+                queueBeat(52f, bpm, 5);
+                queueBeat(53.5f, bpm, 10);
+                queueBeat(54f, bpm, 5);
+                queueBeat(55.5f, bpm, 10);
+                queueBeat(56f, bpm, 5);
+                queueBeat(59.5f, bpm, 10);
+                queueBeat(60f, bpm, 5);
+                queueBeat(63f, bpm, -4);
+                queueBeat(64f, bpm, 10);
+
+                queueBeat(80f, bpm, 5);
+                queueBeat(82.5f, bpm, 10);
+                queueBeat(83f, bpm, 0);
+                queueBeat(84f, bpm, 0);
+                queueBeat(85.5f, bpm, 0);
+                queueBeat(87f, bpm, 0);
+                queueBeat(88f, bpm, 5);
+                queueBeat(89.5f, bpm, 10);
+                queueBeat(90f, bpm, 5);
+                queueBeat(91.5f, bpm, 10);
+                queueBeat(92f, bpm, 5);
+                queueBeat(93.5f, bpm, 10);
+                queueBeat(94f, bpm, 5);
+                queueBeat(95.5f, bpm, 10);
+
+                queueBeat(96f, bpm, 5);
+                queueBeat(99.5f, bpm, 10);
+                queueBeat(100f, bpm, 5);
+                queueBeat(102.5f, bpm, 10);
+                queueBeat(103f, bpm, 0);
+                queueBeat(104f, bpm, 5);
+                queueBeat(105.5f, bpm, 10);
+                queueBeat(106f, bpm, 5);
+                queueBeat(107.5f, bpm, 10);
+                queueBeat(108f, bpm, 5);
+                queueBeat(109.5f, bpm, 10);
+                queueBeat(110f, bpm, 5);
+                queueBeat(111.5f, bpm, 10);
+
+                queueBeat(112f, bpm, 4);
+                queueBeat(113.5f, bpm, 3);
+                queueBeat(115f, bpm, 2);
+                queueBeat(116f, bpm, 7);
+                queueBeat(119.5f, bpm, 12);
+                queueBeat(120f, bpm, 1);
+                queueBeat(121.5f, bpm, 2);
+                queueBeat(123f, bpm, 8);
+                queueBeat(127.5f, bpm, 13);
+                queueBeat(128f, bpm, 1);
+                queueBeat(129.5f, bpm, 2);
+                queueBeat(131f, bpm, 3);
+                queueBeat(132f, bpm, 4);
+                queueBeat(133.5f, bpm, 2);
+                queueBeat(135f, bpm, 3);
+                queueBeat(136f, bpm, 9);
+                queueBeat(137.5f, bpm, 14);
+                queueBeat(138f, bpm, 8);
+                queueBeat(139.5f, bpm, 13);
+                queueBeat(140f, bpm, 7);
+                queueBeat(141.5f, bpm, 12);
+                queueBeat(142f, bpm, 6);
+                queueBeat(143.5f, bpm, 11);
+
+                queueBeat(144f, bpm, 5);
+                queueBeat(156f, bpm, 10);
+
+                queueBeat(160f, bpm, -1);
+
+                songLength = 160;
+                audioSource.clip = music[3];
+                audioSource.loop = false;
+                audioSource.Play();
+                break;
             default:
                 bpm = 162f;
                 audioSource.clip = music[0];
@@ -408,7 +539,7 @@ public class Beats : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyUp(KeyCode.Space))// || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
                 bool miss = false;
-                if (Input.GetKeyDown(KeyCode.Space)) {
+                if ((heldDown && Input.GetKeyUp(KeyCode.Space)) || (!heldDown && Input.GetKeyDown(KeyCode.Space))) { //penalize pressing when no notes OR releasing mid-hold.
                     hit = float.PositiveInfinity;
                 }
                 for (int i = 0; i < timings.Count; i++)
@@ -451,6 +582,14 @@ public class Beats : MonoBehaviour
                             }
                             hit = timings[i].Item1; //set hit to the offset
                             timings[i] = (timings[i].Item1, timings[i].Item2, timings[i].Item3, true);
+                            if (5 <= timings[i].Item2 && timings[i].Item2 < 10)
+                            {
+                                heldDown = true;
+                            }
+                            else if (10 <= timings[i].Item2 && timings[i].Item2 < 15)
+                            {
+                                heldDown = false;
+                            }
                             break;
                         }
                         if (timings[i].Item1 > 60 / bpm * TIMING_LENIENCE) //if there are no beats yet and we've already reached a quarter beat in the future, we've missed
@@ -463,6 +602,14 @@ public class Beats : MonoBehaviour
                 if (hit == float.PositiveInfinity && !miss) //only happens if there's no more normal notes
                 {
                     hit = float.NaN;
+                }
+                if (miss && heldDown) //if we missed due to releasing
+                {
+                    heldDown = false;
+                    //delete the rest of the hold
+                    int startDel;
+                    int delId;
+                    int endDel;
                 }
                 //Debug.Log(hit.ToString());
             } //if float is NaN there's nothing pressed; if float is PositiveInfinity it's a miss.
