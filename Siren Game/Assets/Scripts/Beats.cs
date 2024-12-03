@@ -508,6 +508,7 @@ public class Beats : MonoBehaviour
                 queueBeat(143.5f, bpm, 11);
 
                 queueBeat(144f, bpm, 5);
+                queueBeat(155f, bpm, -4);
                 queueBeat(156f, bpm, 10);
 
                 queueBeat(160f, bpm, -1);
@@ -607,9 +608,37 @@ public class Beats : MonoBehaviour
                 {
                     heldDown = false;
                     //delete the rest of the hold
-                    int startDel;
-                    int delId;
-                    int endDel;
+                    int startDel = 0;
+                    int delId = 0;
+                    int endDel = 0;
+
+                    for (int i = 0; i < timings.Count; i++)
+                    {
+                        if (delId == 0)
+                        {
+                            if (timings[i].Item1 > 0 && !timings[i].Item4)
+                            {
+                                startDel = i;
+                                delId = timings[i].Item2;
+                            }
+                        }
+                        else
+                        {
+                            if (timings[i].Item2 == (5 - delId))
+                            {
+                                endDel = i;
+                                break;
+                            }
+                        }
+                    }
+                    for (int i = endDel; i >= startDel; i--)
+                    {
+                        if (timings[i].Item2 == delId || timings[i].Item2 == (5-delId))
+                        {
+                            Object.Destroy(timings[i].Item3);
+                            timings.RemoveAt(i);
+                        }
+                    }
                 }
                 //Debug.Log(hit.ToString());
             } //if float is NaN there's nothing pressed; if float is PositiveInfinity it's a miss.
