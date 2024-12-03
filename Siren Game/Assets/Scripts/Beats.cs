@@ -518,6 +518,126 @@ public class Beats : MonoBehaviour
                 audioSource.loop = false;
                 audioSource.Play();
                 break;
+            case Manager.Songs.Lust:
+                bpm = 170f;
+
+                queueBeat(0f, bpm, -3);
+
+                queueBeat(2f, bpm, 0);
+                queueBeat(3f, bpm, 0);
+                queueBeat(4f, bpm, 5);
+                queueBeat(20f, bpm, 10);
+
+                queueBeat(32f, bpm, 0);
+                queueBeat(33.5f, bpm, 0);
+                queueBeat(35f, bpm, 0);
+                queueBeat(35f, bpm, -4);
+                queueBeat(36f, bpm, 5);
+                queueBeat(37.5f, bpm, 10);
+                queueBeat(38f, bpm, 5);
+                queueBeat(39.5f, bpm, 10);
+                queueBeat(40f, bpm, 5);
+                queueBeat(43.5f, bpm, 10);
+                queueBeat(44f, bpm, 5);
+                queueBeat(45.5f, bpm, 10);
+                queueBeat(46f, bpm, 5);
+                queueBeat(47.5f, bpm, 10);
+                queueBeat(48f, bpm, 5);
+                queueBeat(49.5f, bpm, 10);
+                queueBeat(50f, bpm, 5);
+                queueBeat(51.5f, bpm, 10);
+                queueBeat(52f, bpm, 5);
+                queueBeat(55.5f, bpm, 10);
+                queueBeat(56f, bpm, 5);
+                queueBeat(59.5f, bpm, 10);
+                queueBeat(60f, bpm, 5);
+                queueBeat(63.5f, bpm, 10);
+                queueBeat(64f, bpm, 5);
+                queueBeat(67.5f, bpm, 10);
+
+                queueBeat(68f, bpm, 5);
+                queueBeat(69.5f, bpm, 10);
+                queueBeat(70f, bpm, 5);
+                queueBeat(71.5f, bpm, 10);
+                queueBeat(72f, bpm, 5);
+                queueBeat(75.5f, bpm, 10);
+                queueBeat(76f, bpm, 5);
+                queueBeat(77.5f, bpm, 10);
+                queueBeat(78f, bpm, 5);
+                queueBeat(79.5f, bpm, 10);
+                queueBeat(80f, bpm, 5);
+                queueBeat(83.5f, bpm, 10);
+                queueBeat(84f, bpm, 5);
+                queueBeat(87.5f, bpm, 10);
+                queueBeat(88f, bpm, 5);
+                queueBeat(91.5f, bpm, 10);
+                queueBeat(92f, bpm, 5);
+                queueBeat(95.5f, bpm, 10);
+                queueBeat(96f, bpm, 5);
+                queueBeat(99f, bpm, -4);
+                queueBeat(99.5f, bpm, 10);
+
+                queueBeat(100f, bpm, 5);
+                queueBeat(103.5f, bpm, 10);
+                queueBeat(104f, bpm, 5);
+                queueBeat(106f, bpm, 10);
+                queueBeat(106.5f, bpm, 5);
+                queueBeat(107.5f, bpm, 10);
+                queueBeat(108f, bpm, 5);
+                queueBeat(111.5f, bpm, 10);
+                queueBeat(112f, bpm, 5);
+                queueBeat(113.5f, bpm, 10);
+                queueBeat(114f, bpm, 5);
+                queueBeat(115.5f, bpm, 10);
+                queueBeat(116f, bpm, 5);
+                queueBeat(119.5f, bpm, 10);
+                queueBeat(120f, bpm, 5);
+                queueBeat(121.5f, bpm, 10);
+                queueBeat(122f, bpm, 5);
+                queueBeat(124f, bpm, 10);
+                queueBeat(124.5f, bpm, 5);
+                queueBeat(125.5f, bpm, 10);
+                queueBeat(126f, bpm, 5);
+                queueBeat(127.5f, bpm, 10);
+                queueBeat(128f, bpm, 5);
+                queueBeat(129.5f, bpm, 10);
+                queueBeat(130f, bpm, 5);
+                queueBeat(131.5f, bpm, 10);
+
+                queueBeat(132f, bpm, 5);
+                queueBeat(135.5f, bpm, 10);
+                queueBeat(136f, bpm, 5);
+                queueBeat(137.5f, bpm, 10);
+                queueBeat(138f, bpm, 5);
+                queueBeat(139.5f, bpm, 10);
+                queueBeat(140f, bpm, 5);
+                queueBeat(143.5f, bpm, 10);
+                queueBeat(144f, bpm, 5);
+                queueBeat(145.5f, bpm, 10);
+                queueBeat(146f, bpm, 5);
+                queueBeat(147.5f, bpm, 10);
+
+                queueBeat(148f, bpm, 5);
+                queueBeat(155.5f, bpm, 10);
+                queueBeat(156f, bpm, 5);
+                queueBeat(157f, bpm, 10);
+                queueBeat(157.5f, bpm, 5);
+                queueBeat(158.5f, bpm, 10);
+                queueBeat(159f, bpm, 5);
+                queueBeat(159.5f, bpm, 10);
+                queueBeat(160f, bpm, 5);
+                queueBeat(161.5f, bpm, 10);
+                queueBeat(162f, bpm, 5);
+                queueBeat(163f, bpm, -4);
+                queueBeat(164f, bpm, 10);
+
+                queueBeat(168f, bpm, -1);
+
+                songLength = 168;
+                audioSource.clip = music[4];
+                audioSource.loop = false;
+                audioSource.Play();
+                break;
             default:
                 bpm = 162f;
                 audioSource.clip = music[0];

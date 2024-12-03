@@ -138,7 +138,8 @@ public class EnemyMovement : MonoBehaviour
         if (gameObject.GetComponent<BoxCollider2D>().bounds.Intersects(target.GetComponent<BoxCollider2D>().bounds))
         {
             //Manager.Instance.enterBattle(Manager.Songs.Pride);
-            Manager.Instance.enterBattle(Manager.Songs.Wrath);
+            //Manager.Instance.enterBattle(Manager.Songs.Wrath);
+            Manager.Instance.enterBattle(Manager.Songs.Lust);
         }
 
         

@@ -31,7 +31,8 @@ public class Manager : MonoBehaviour
         SoundTest,
         Incedious,
         Pride,
-        Wrath
+        Wrath,
+        Lust
     }
     public Songs song = Songs.Null;
 
