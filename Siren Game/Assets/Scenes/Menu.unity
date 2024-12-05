@@ -693,17 +693,17 @@ VideoPlayer:
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 1447868432}
-  m_TargetMaterialProperty: <noninit>
+  m_TargetMaterialProperty: 
   m_RenderMode: 3
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
-  m_Url: file://D:/Profiles/sxr7411/source/repos/Theseus/Siren Game/Assets/Images/menu/Siren
-    Menu.webm
+  m_Url: file://D:/Profiles/sxr7411/source/repos/Theseus/Siren Game/Assets/StreamingAssets/Siren
+    Menu.mp4
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
@@ -1106,12 +1106,8 @@ MonoBehaviour:
   hunger: -1
   newHunger: -1
   song: 0
-  shipAssets:
-  - {fileID: 2800000, guid: 314f1b7daed511d409ade86c0b3567bc, type: 3}
-  - {fileID: 2800000, guid: 314f1b7daed511d409ade86c0b3567bc, type: 3}
-  - {fileID: 2800000, guid: 405a71d806938b448af1ab2b8464bf62, type: 3}
-  - {fileID: 2800000, guid: bcad5b677a5a759499c57a5e442b20ad, type: 3}
-  shipSprite: {fileID: 0}
+  shipSprites: []
+  ship: {fileID: 0}
 --- !u!4 &1976729129
 Transform:
   m_ObjectHideFlags: 0

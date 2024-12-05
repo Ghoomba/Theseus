@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.U2D.Aseprite;
+//using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
