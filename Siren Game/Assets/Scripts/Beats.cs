@@ -40,6 +40,7 @@ public class Beats : MonoBehaviour
     int walkBeatAmt = 0;
     int remainingFails = 0;
     float sailorStartX = 0;
+    float sailorEndX = 0;
 
     int songLength = 0;
     float time = 0;
@@ -65,7 +66,6 @@ public class Beats : MonoBehaviour
 
         sailor = GameObject.Find("sailor");
         sailorAnim = sailor.GetComponent<Animator>();
-        sailorStartX = sailor.transform.localPosition.x;
 
         offset = PlayerPrefs.GetFloat("Offset", 0f);
         if (!float.IsNormal(offset))
@@ -74,7 +74,28 @@ public class Beats : MonoBehaviour
         }
         timings = new List<(float, int, GameObject, bool)> ();
 
-        switch(Manager.Instance.song)
+        GameObject battleShip = GameObject.Find("ship");
+        battleShip.GetComponent<SpriteRenderer>().sprite = Manager.Instance.ship;
+
+        switch (battleShip.GetComponent<SpriteRenderer>().sprite.name)
+        {
+            case "s1":
+                sailorStartX = 7.64f;
+                sailorEndX = 3.3f;
+                break;
+            case "s2":
+                sailorStartX = 8.15f;
+                sailorEndX = 1.79f;
+                break;
+            default:
+                sailorStartX = 5.82f;
+                sailorEndX = 1.36f;
+                break;
+        }
+
+        sailor.transform.SetPositionAndRotation(new Vector3(sailorStartX, sailor.transform.position.y, sailor.transform.position.z), sailor.transform.rotation);
+
+        switch (Manager.Instance.song)
         {
             case Manager.Songs.SoundTest:
                 bpm = 120f;
@@ -654,8 +675,7 @@ public class Beats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject battleShip = GameObject.Find("ship");
-        battleShip.GetComponent<SpriteRenderer>().sprite = Manager.Instance.ship;
+        
 
         float hit = float.NaN;
         if (Manager.Instance.song != Manager.Songs.SoundTest)
@@ -846,7 +866,7 @@ public class Beats : MonoBehaviour
                     {
                         float sailorCurrentX = sailor.transform.localPosition.x;
 
-                        if (sailor.transform.localPosition.x < 5.82f)
+                        if (sailor.transform.localPosition.x < sailorStartX)
                         {
                             sailor.GetComponent<SpriteRenderer>().flipX = true;
                             sailor.transform.localPosition -= new Vector3((sailorCurrentX - sailorStartX) / remainingFails, 0.0f, 0.0f);
@@ -1006,14 +1026,14 @@ public class Beats : MonoBehaviour
 
             //StartCoroutine(Shake(fakeShipObject));
             
-            if (sailor.transform.localPosition.x >= 1.36)
+            if (sailor.transform.localPosition.x >= sailorEndX)
             {
                 if (Manager.Instance.song != Manager.Songs.SoundTest)
                 {
                     if(walkBeatAmt <= 0)
                         walkBeatAmt = 1;
 
-                    sailor.transform.localPosition += new Vector3((0.8f - sailor.transform.localPosition.x) / (walkBeatAmt - 42), 0.0f, 0.0f);
+                    sailor.transform.localPosition += new Vector3((sailorEndX - sailor.transform.localPosition.x) / (walkBeatAmt - 42), 0.0f, 0.0f);
                     sailorAnim.SetTrigger("tWalk");
                 }
                 else
@@ -1021,7 +1041,7 @@ public class Beats : MonoBehaviour
                     if (walkBeatAmt <= 0)
                         walkBeatAmt = 1;
 
-                    sailor.transform.localPosition += new Vector3((0.8f - sailor.transform.localPosition.x) / walkBeatAmt, 0.0f, 0.0f);
+                    sailor.transform.localPosition += new Vector3((sailorEndX - sailor.transform.localPosition.x) / walkBeatAmt, 0.0f, 0.0f);
                     sailorAnim.SetTrigger("tWalk");
                 }
 
@@ -1043,7 +1063,7 @@ public class Beats : MonoBehaviour
         {
             float sailorCurrentX = sailor.transform.localPosition.x;
 
-            if (sailor.transform.localPosition.x < 5.82f)
+            if (sailor.transform.localPosition.x < sailorStartX)
             {
                 sailor.transform.localPosition -= new Vector3((sailorCurrentX - sailorStartX) / remainingFails, 0.0f, 0.0f);
                 sailorAnim.SetTrigger("tWalk");

@@ -49,7 +49,7 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shipSprites = new List<Sprite> { Resources.Load<Sprite>("s2"), Resources.Load<Sprite>("s3"), Resources.Load<Sprite>("s4") };
+        shipSprites = new List<Sprite> { Resources.Load<Sprite>("s1"), Resources.Load<Sprite>("s2"), Resources.Load<Sprite>("s3"), Resources.Load<Sprite>("s4") };
     }
 
     void Awake()
