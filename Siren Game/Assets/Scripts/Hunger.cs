@@ -11,6 +11,7 @@ public class Hunger : MonoBehaviour
     float hunger;
     public float hungerDrainPerSecond = 1.0f;
     GameObject meter;
+    private Renderer renderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,9 @@ public class Hunger : MonoBehaviour
         }*/
 
         meter = gameObject;
+
+        renderer = meter.GetComponent<Renderer>();
+
     }
 
     void Awake()
@@ -56,10 +60,27 @@ void Update()
         }
 
         Manager.Instance.hunger = hunger;
+
+        ChangeColor();
     }
 
     public void awardHunger(float amt)
     {
         hunger = Mathf.Min(hunger + amt, hungerMax);
+    }
+
+    private void ChangeColor()
+    {
+
+        Color startColor = Color.green;
+        Color endColor = Color.red;
+
+        float t = Mathf.InverseLerp(0, hungerMax, hunger);
+        Color currentColor = Color.Lerp(endColor, startColor, t);
+
+        if(renderer != null)
+        {
+            renderer.material.color = currentColor;
+        }
     }
 }
