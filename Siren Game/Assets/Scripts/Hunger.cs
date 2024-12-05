@@ -72,6 +72,9 @@ void Update()
     private void ChangeColor()
     {
 
+        //Color startColor = new Color(0, 255, 0, 1);
+        //Color endColor = new Color(255, 0, 0, 1);
+
         Color startColor = Color.green;
         Color endColor = Color.red;
 
