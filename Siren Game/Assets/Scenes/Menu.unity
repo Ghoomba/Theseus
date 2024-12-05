@@ -1106,6 +1106,12 @@ MonoBehaviour:
   hunger: -1
   newHunger: -1
   song: 0
+  shipAssets:
+  - {fileID: 2800000, guid: 314f1b7daed511d409ade86c0b3567bc, type: 3}
+  - {fileID: 2800000, guid: 314f1b7daed511d409ade86c0b3567bc, type: 3}
+  - {fileID: 2800000, guid: 405a71d806938b448af1ab2b8464bf62, type: 3}
+  - {fileID: 2800000, guid: bcad5b677a5a759499c57a5e442b20ad, type: 3}
+  shipSprite: {fileID: 0}
 --- !u!4 &1976729129
 Transform:
   m_ObjectHideFlags: 0

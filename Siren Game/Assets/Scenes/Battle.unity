@@ -588,8 +588,8 @@ GameObject:
   - component: {fileID: 355175799}
   - component: {fileID: 355175798}
   m_Layer: 0
-  m_Name: Side Ship
-  m_TagString: Untagged
+  m_Name: ship
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

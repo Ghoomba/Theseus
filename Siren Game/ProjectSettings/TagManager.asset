@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ship
   - Obstacle
+  - ship1
+  - ship2
+  - ship3
+  - ship4
+  - Ship
   layers:
   - Default
   - TransparentFX

@@ -425,6 +425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShipMedium
       objectReference: {fileID: 0}
+    - target: {fileID: 5610392998189218734, guid: 28409fae9af964b4fb489a8e09ff9b67, type: 3}
+      propertyPath: m_TagString
+      value: ship2
+      objectReference: {fileID: 0}
     - target: {fileID: 8195525036354924737, guid: 28409fae9af964b4fb489a8e09ff9b67, type: 3}
       propertyPath: Points.Array.size
       value: 7
@@ -926,6 +930,10 @@ PrefabInstance:
     - target: {fileID: 5610392998189218734, guid: 353e0478d44a4fe48b229a40e072ba86, type: 3}
       propertyPath: m_Name
       value: ShipSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610392998189218734, guid: 353e0478d44a4fe48b229a40e072ba86, type: 3}
+      propertyPath: m_TagString
+      value: ship1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3190,11 +3198,11 @@ PrefabInstance:
       objectReference: {fileID: 577232801}
     - target: {fileID: 5610392998189218734, guid: 7d56de85138160e45a84bfd8ecf3a3b5, type: 3}
       propertyPath: m_Name
-      value: Ship
+      value: ShipLarge
       objectReference: {fileID: 0}
     - target: {fileID: 5610392998189218734, guid: 7d56de85138160e45a84bfd8ecf3a3b5, type: 3}
       propertyPath: m_TagString
-      value: Ship
+      value: ship3
       objectReference: {fileID: 0}
     - target: {fileID: 6269058680719189740, guid: 7d56de85138160e45a84bfd8ecf3a3b5, type: 3}
       propertyPath: m_Radius
@@ -3353,12 +3361,12 @@ SceneRoots:
   - {fileID: 1648919551}
   - {fileID: 744013252}
   - {fileID: 162550935170249163}
+  - {fileID: 488115810}
+  - {fileID: 819931150}
   - {fileID: 4255874837588016848}
   - {fileID: 1712122721}
   - {fileID: 2092150767}
   - {fileID: 1009116410}
-  - {fileID: 488115810}
-  - {fileID: 819931150}
   - {fileID: 386680082}
   - {fileID: 1927076440}
   - {fileID: 959508959}

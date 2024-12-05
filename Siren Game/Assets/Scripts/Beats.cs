@@ -654,6 +654,9 @@ public class Beats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject battleShip = GameObject.Find("ship");
+        battleShip.GetComponent<SpriteRenderer>().sprite = Manager.Instance.ship;
+
         float hit = float.NaN;
         if (Manager.Instance.song != Manager.Songs.SoundTest)
         {

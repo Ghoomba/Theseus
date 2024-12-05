@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Unity.Mathematics;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +23,9 @@ public class Manager : MonoBehaviour
     }
 
     State state = State.Menu;
+
+
+
     public float hunger = -1;
     public float newHunger = -1;
 
@@ -36,11 +42,14 @@ public class Manager : MonoBehaviour
     }
     public Songs song = Songs.Null;
 
+    public List<Sprite> shipSprites;
+    public Sprite ship = null;
+
     public static Manager Instance = null;
     // Start is called before the first frame update
     void Start()
     {
-        
+        shipSprites = new List<Sprite> { Resources.Load<Sprite>("s2"), Resources.Load<Sprite>("s3"), Resources.Load<Sprite>("s4") };
     }
 
     void Awake()
@@ -90,10 +99,12 @@ public class Manager : MonoBehaviour
             }*/
             //song = Songs.SoundTest;
             //song = Songs.Pride;
+
             this.song = song;
             state = State.Battle;
             newHunger = hunger;
             SceneManager.LoadScene("Battle");
+            
         }
     }
 

@@ -137,6 +137,27 @@ public class EnemyMovement : MonoBehaviour
         }
         if (gameObject.GetComponent<BoxCollider2D>().bounds.Intersects(target.GetComponent<BoxCollider2D>().bounds))
         {
+            // Tell the game manager which ship sprite to use in battle scene based
+            // on which ship was collided with in open world
+            switch (gameObject.tag)
+            {
+                case "ship1":
+                    Manager.Instance.ship = Manager.Instance.shipSprites[0];
+                    break;
+                case "ship2":
+                    Manager.Instance.ship = Manager.Instance.shipSprites[0];
+                    break;
+                case "ship3":
+                    Manager.Instance.ship = Manager.Instance.shipSprites[1];
+                    break;
+                case "ship4":
+                    Manager.Instance.ship = Manager.Instance.shipSprites[2];
+                    break;
+                default:
+                    Manager.Instance.ship = Manager.Instance.shipSprites[1];
+                    break;
+            }    
+
             //Manager.Instance.enterBattle(Manager.Songs.Pride);
             //Manager.Instance.enterBattle(Manager.Songs.Wrath);
             Manager.Instance.enterBattle(Manager.Songs.Lust);
