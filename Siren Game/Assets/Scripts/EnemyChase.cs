@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyChase : MonoBehaviour
 {
-    private float speed;
+    public float speed;
     float rotationSpeed;
     Vector2 originalPosition;
     GameObject player;
@@ -17,8 +17,8 @@ public class EnemyChase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 1.0f;
-        rotationSpeed = 60.0f;
+        //speed = 1.0f;
+        rotationSpeed = 80.0f;
         transform.position = Points[0].transform.position;
         player = GameObject.Find("Siren");
 
@@ -30,31 +30,6 @@ public class EnemyChase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //distance = Vector2.Distance(transform.position, player.transform.position);
-        //
-        //Vector2 direction = player.transform.position - transform.position;
-        //direction.Normalize();
-        //
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //
-        //angle += -90f;
-        //
-        //
-        //if (distance < 4)
-        //{
-        //    transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-        //
-        //    Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        //
-        //    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        //}
-        //else
-        //{
-        //    transform.position = Vector2.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime);
-        //}
-
-
-
         if (Points.Length == 0)
         {
 
@@ -81,7 +56,6 @@ public class EnemyChase : MonoBehaviour
 
                 if (transform.position == Points[pointsIndex].transform.position)
                 {
-
                     pointsIndex += 1;
                 }
 
