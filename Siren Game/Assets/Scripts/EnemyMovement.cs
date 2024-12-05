@@ -143,24 +143,29 @@ public class EnemyMovement : MonoBehaviour
             {
                 case "ship1":
                     Manager.Instance.ship = Manager.Instance.shipSprites[0];
+                    Manager.Instance.enterBattle(Manager.Songs.Pride);
                     break;
                 case "ship2":
                     Manager.Instance.ship = Manager.Instance.shipSprites[0];
+                    Manager.Instance.enterBattle(Manager.Songs.Wrath);
                     break;
                 case "ship3":
                     Manager.Instance.ship = Manager.Instance.shipSprites[1];
+                    Manager.Instance.enterBattle(Manager.Songs.Lust);
                     break;
                 case "ship4":
                     Manager.Instance.ship = Manager.Instance.shipSprites[2];
+                    Manager.Instance.enterBattle(Manager.Songs.Lust);
                     break;
                 default:
                     Manager.Instance.ship = Manager.Instance.shipSprites[1];
+                    Manager.Instance.enterBattle(Manager.Songs.Pride);
                     break;
             }    
 
             //Manager.Instance.enterBattle(Manager.Songs.Pride);
             //Manager.Instance.enterBattle(Manager.Songs.Wrath);
-            Manager.Instance.enterBattle(Manager.Songs.Lust);
+            //Manager.Instance.enterBattle(Manager.Songs.Lust);
         }
 
         
