@@ -158,6 +158,7 @@ public class Manager : MonoBehaviour
     {
         if (state == State.Controls)
         {
+            ship = shipSprites[0];
             Destroy(RetainAudioPoint.instance.gameObject);
             state = State.Soundtest;
             song = Songs.SoundTest;
