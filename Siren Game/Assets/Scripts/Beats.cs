@@ -1,5 +1,8 @@
+//using System;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -850,8 +853,22 @@ public class Beats : MonoBehaviour
                             timings[i].Item3.GetComponent<SpriteRenderer>().color = Color.yellow;
                             if (timings[i+1].Item2 != -timings[i].Item2)
                             {
+                                //search for the end
+                                int futureBeats = 1;
+                                bool found = false;
+                                while (!found)
+                                {
+                                    if (timings[i + futureBeats].Item2 == 5 + timings[i].Item2)
+                                    {
+                                        found = true;
+                                    }
+                                    else
+                                    {
+                                        futureBeats++;
+                                    }
+                                }
                                 timings.Insert(i + 1, (
-                                    timings[i].Item1 + .075f / bpm * 60,
+                                    timings[i+futureBeats].Item1,
                                     -timings[i].Item2,
                                     Object.Instantiate(noteBasis, staffObject.transform),
                                     false
@@ -925,6 +942,17 @@ public class Beats : MonoBehaviour
                 }
                 if (timings[i].Item2 <= -5 && timings[i].Item2 > -10)
                 {
+                    float startTime = 0f;
+                    if (i>0 && !timings[i-1].Item4)
+                    {
+                        startTime = Mathf.Max(startTime, timings[i - 1].Item1);
+                    }
+
+                    float endTime = 120f / bpm;
+                    
+                    endTime = Mathf.Min(endTime, timings[i].Item1);
+
+                    /*
                     if (timings[i+1].Item2 != timings[i].Item2 && timings[i+1].Item1 - timings[i].Item1 > .075f / bpm * 60 && timings[i + 1].Item1 > 60/bpm)
                     {
                         timings.Insert(i+1, (
@@ -943,36 +971,42 @@ public class Beats : MonoBehaviour
                             ));
                         }
                     }
-                    if (timings[i].Item1 < 120 / bpm)
+                    */
+
+                    timings[i].Item3.transform.localScale = new Vector3((endTime-startTime) / 60 * bpm / 3, timings[i].Item3.transform.localScale.y, 1);
+                    timings[i].Item3.transform.localPosition = new Vector3(staffPos + ((endTime + startTime) / 2 / 60 * bpm / 2) * (noteStart - staffPos), timings[i].Item3.transform.localPosition.y, 0);
+
+                    if (startTime < 120 / bpm)
                     {
                         switch (-timings[i].Item2 % 5)
                         {
                             case 0:
                                 timings[i].Item3.SetActive(true);
-                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0, 0);
+                                timings[i].Item3.transform.localPosition = new Vector3(timings[i].Item3.transform.localPosition.x, 0, 0);
                                 break;
                             case 1:
                                 timings[i].Item3.SetActive(true);
-                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0.375f, 0);
+                                timings[i].Item3.transform.localPosition = new Vector3(timings[i].Item3.transform.localPosition.x, 0.375f, 0);
                                 timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
                                 break;
                             case 2:
                                 timings[i].Item3.SetActive(true);
-                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), 0.125f, 0);
+                                timings[i].Item3.transform.localPosition = new Vector3(timings[i].Item3.transform.localPosition.x, 0.125f, 0);
                                 timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
                                 break;
                             case 3:
                                 timings[i].Item3.SetActive(true);
-                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), -0.125f, 0);
+                                timings[i].Item3.transform.localPosition = new Vector3(timings[i].Item3.transform.localPosition.x, -0.125f, 0);
                                 timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
                                 break;
                             case 4:
                                 timings[i].Item3.SetActive(true);
-                                timings[i].Item3.transform.localPosition = new Vector3(staffPos + (timings[i].Item1 / 60 * bpm / 2) * (noteStart - staffPos), -0.375f, 0);
+                                timings[i].Item3.transform.localPosition = new Vector3(timings[i].Item3.transform.localPosition.x, -0.375f, 0);
                                 timings[i].Item3.transform.localScale = new Vector3(timings[i].Item3.transform.localScale.x, 0.25f, 1);
                                 break;
                         }
                     }
+                    
                     timings[i].Item3.GetComponent<SpriteRenderer>().color = new Color(1, .92f, .016f, .1f);
                 }
             }
